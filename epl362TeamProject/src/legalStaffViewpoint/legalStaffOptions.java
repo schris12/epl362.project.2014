@@ -12,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 import receptionistViewpoint.appointments;
 import receptionistViewpoint.clientOptions;
 import main.legalRecords;
-import main.mainScreen;
 
 
 public class legalStaffOptions extends JFrame {
