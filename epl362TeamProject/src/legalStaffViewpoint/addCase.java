@@ -88,7 +88,6 @@ public class addCase extends JFrame {
 		cmbRisk.setBounds(240,300,200,30);
 		contentPane.add(cmbRisk);
 		
-		//test
 		//fill combo boxes
 		fillCombo.fillClient(cmbClient);
 		fillCombo.fillLawyer(cmbLawyer);
