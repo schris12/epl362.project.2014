@@ -17,8 +17,8 @@ import receptionistViewpoint.appointments;
 import legalStaffViewpoint.legalStaffOptions;
 import main.constants;
 import main.httpRequest;
-import main.legalRecords;
-import main.mainScreen;
+import main.MainScreen;
+
 
 import com.json.parsers.JSONParser;
 import com.json.parsers.JsonParserFactory;
@@ -87,7 +87,7 @@ public class headOfficeOptions {
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
-				new legalRecords();
+				new MainScreen();
 			}
 		});
 

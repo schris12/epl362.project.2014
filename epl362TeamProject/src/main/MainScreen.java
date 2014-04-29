@@ -19,17 +19,17 @@ import headOfficeViewpoint.headOfficeOptions;
 import legalStaffViewpoint.legalStaffOptions;
 import receptionistViewpoint.receptionistOptions;
 
-public class legalRecords {
+public class MainScreen {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtUsername, txtPassword;
 
 	public static void main(String[] args) {
-		new legalRecords();
+		new MainScreen();
 	}
 
-	public legalRecords() {
+	public MainScreen() {
 
 		final JFrame mainLoginScreen = new JFrame();
 
