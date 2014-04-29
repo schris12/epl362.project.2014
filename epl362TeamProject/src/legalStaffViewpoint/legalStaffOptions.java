@@ -11,7 +11,8 @@ import javax.swing.border.EmptyBorder;
 
 import receptionistViewpoint.appointments;
 import receptionistViewpoint.clientOptions;
-import main.MainScreen;
+import main.legalRecords;
+import main.mainScreen;
 
 
 public class legalStaffOptions extends JFrame {
@@ -60,7 +61,7 @@ public class legalStaffOptions extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
-				new MainScreen();
+				new legalRecords();
 			}
 		});
 		
