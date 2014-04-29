@@ -16,7 +16,6 @@ import receptionistViewpoint.appointments;
 import legalStaffViewpoint.legalStaffOptions;
 import main.constants;
 import main.httpRequest;
-import main.mainScreen;
 
 import com.json.parsers.JSONParser;
 import com.json.parsers.JsonParserFactory;
