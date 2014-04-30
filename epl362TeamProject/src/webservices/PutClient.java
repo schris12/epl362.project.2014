@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class PutClient {
-	public int put_client(String name, String surname) {
+	public int put_client(String id, String name, String surname) {
 		String dbUrl = "jdbc:mysql://localhost/362";
 		try {
 
@@ -13,9 +13,10 @@ public class PutClient {
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
 			String insertTableSQL = "INSERT INTO client"
-			+ "(Name, Surname) VALUES"
-			+ "(?,?)";
+			+ "(client_id, name, surname) VALUES"
+			+ "(?,?,?)";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
+			preparedStatement.setString(1, id);
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, surname);
 			int ret = preparedStatement.executeUpdate();
