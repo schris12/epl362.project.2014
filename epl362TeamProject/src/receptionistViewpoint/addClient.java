@@ -71,21 +71,20 @@ public class addClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = txtClientID.getText();
 				String name = txtClientName.getText();
 				String surname = txtClientSurname.getText();	
 				
 				//Creating the Request
 				webservices.PutClientStub.Put_client  request;
 				request = new Put_client();
-//				request.setLawyer_id(lawyer_id);				
-//				request.setDate(date);
+				request.setName(name);				
+				request.setSurname(surname);
 			     
 			     //Invoking the service
 			     try {
-			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
-//					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
-//					System.out.println("Response: " + response.get_return());					
+			    	webservices.PutClientStub stub = new webservices.PutClientStub();
+					webservices.PutClientStub.Put_clientResponse response = stub.put_client(request);
+					System.out.println("Response: " + response.get_return());					
 				
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
