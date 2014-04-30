@@ -2,10 +2,10 @@
 -- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 30 Απρ 2014 στις 16:22:19
--- Έκδοση διακομιστή: 5.6.14
--- Έκδοση PHP: 5.5.6
+-- Host: 127.0.0.1
+-- Generation Time: Apr 30, 2014 at 04:39 PM
+-- Server version: 5.6.14
+-- PHP Version: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,34 +17,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Βάση: `362`
+-- Database: `362`
 --
 
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `appointments`
+-- Table structure for table `appointments`
 --
 
 CREATE TABLE IF NOT EXISTS `appointments` (
   `client_id` varchar(10) NOT NULL,
   `lawyer_id` varchar(10) NOT NULL,
   `date` date NOT NULL,
-  `appointment_id` varchar(20) NOT NULL,
+  `appointment_id` int(20) NOT NULL AUTO_INCREMENT,
   `missed` tinyint(1) NOT NULL,
   `branch_id` varchar(10) NOT NULL,
   PRIMARY KEY (`appointment_id`),
   KEY `client_id` (`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `case`
+-- Table structure for table `case`
 --
 
 CREATE TABLE IF NOT EXISTS `case` (
-  `case_id` varchar(10) NOT NULL,
+  `case_id` int(10) NOT NULL AUTO_INCREMENT,
   `client_id` varchar(10) NOT NULL,
   `legal_id` varchar(10) NOT NULL,
   `date_open` date NOT NULL,
@@ -52,25 +52,32 @@ CREATE TABLE IF NOT EXISTS `case` (
   `risk` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   PRIMARY KEY (`case_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Δομή πίνακα για τον πίνακα `client`
---
-
-CREATE TABLE IF NOT EXISTS `client` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `surname` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `comments`
+-- Table structure for table `client`
+--
+
+CREATE TABLE IF NOT EXISTS `client` (
+  `client_id` varchar(10) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `surname` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`client_id`, `name`, `surname`) VALUES
+('1', 'Kwstis12', 'Giannis');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
@@ -84,24 +91,24 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `lawyer`
+-- Table structure for table `lawyer`
 --
 
 CREATE TABLE IF NOT EXISTS `lawyer` (
-  `ID` varchar(10) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Surname` varchar(20) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `lawyer_id` varchar(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) NOT NULL,
+  PRIMARY KEY (`lawyer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `recommendation`
+-- Table structure for table `recommendation`
 --
 
 CREATE TABLE IF NOT EXISTS `recommendation` (
-  `case_id` varchar(10) NOT NULL,
+  `case_id` int(10) NOT NULL,
   `recommendation` text NOT NULL,
   `opinion` text NOT NULL,
   `date` date NOT NULL,
@@ -111,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `recommendation` (
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `warning_log`
+-- Table structure for table `warning_log`
 --
 
 CREATE TABLE IF NOT EXISTS `warning_log` (
