@@ -2,35 +2,45 @@ package webservices;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 
 public class SelectClient {
-	public String select_client() {
+	public LinkedList<String> select_client() {
 		String dbUrl = "jdbc:mysql://localhost/362";
 		try {
+			LinkedList<String> resultString = new LinkedList<String>();
+			Connection connect = null;
+			Statement statement = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
 
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(dbUrl, "root","");
+			connect = DriverManager					.getConnection("jdbc:mysql://localhost/362?"
+							+ "user=root&password=");
 
-			String returnSQL = "SELECT * FROM client";
-			java.sql.PreparedStatement preparedStatement = con.prepareStatement(returnSQL);
-			ResultSet set = preparedStatement.executeQuery();
-			while (set.next()){
-				String client_id = set.getString("client_id");
-				String name = set.getString("name");
-				String surname = set.getString("surname");
-//				String retu = 
+			statement = connect.createStatement();
+			resultSet = statement
+					.executeQuery("select * from 362.client");
+
+			while (resultSet.next()) {
+				String client_id = resultSet.getString("client_id");
+				String name = resultSet.getString("name");
+				String surname = resultSet.getString("surname");
+				resultString.add(client_id+", "+name+", "+surname);
 			}
-			con.close();
-			return "";		
-		}
-		catch (ClassNotFoundException e) {
+
+			connect.close();
+
+			return resultString;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		catch (SQLException e) {			
-			e.printStackTrace();
-		}
-		return "NULL";
+		return null;
 	}
 }
