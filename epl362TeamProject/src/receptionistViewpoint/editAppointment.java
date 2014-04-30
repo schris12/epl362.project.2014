@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import webservices.PutAppointmentParseExceptionException;
+import webservices.DeleteLawyerStub.Delete_lawyer;
 import webservices.PutAppointmentStub.Put_appointment;
 import webservices.SelectAppointmentStub.Select_appointment;
 
@@ -101,8 +102,17 @@ public class editAppointment extends JFrame {
 			}
 		});
 		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(220, 320, 80, 30);
+		contentPane.add(btnDelete);
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(220, 320, 80, 30);
+		btnSave.setBounds(310, 320, 80, 30);
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -137,7 +147,7 @@ public class editAppointment extends JFrame {
 		});
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(310, 320, 80, 30);
+		btnBack.setBounds(400, 320, 80, 30);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
