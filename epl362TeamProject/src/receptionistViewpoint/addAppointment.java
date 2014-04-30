@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,13 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.constants;
-import main.fillCombo;
-import main.httpRequest;
-
-
 import webservices.PutAppointmentParseExceptionException;
-import webservices.PutAppointmentStub.*;
+import webservices.PutAppointmentStub.Put_appointment;
+import webservices.SelectClientStub.Select_client;
 
 public class addAppointment extends JFrame {
 
@@ -33,6 +30,25 @@ public class addAppointment extends JFrame {
 	
 	public static void main(String[] args) {
 		new addAppointment();
+	}
+	
+	public void fillClient(){
+		webservices.SelectClientStub.Select_client request;
+		request = new Select_client();
+	     
+	     //Invoking the service
+	     try {
+	    	webservices.SelectClientStub stub = new webservices.SelectClientStub();
+			webservices.SelectClientStub.Select_clientResponse response = stub.select_client(request);
+			String[] result = response.get_return();			
+			cmbClient = new JComboBox<String>(result);
+			cmbClient.setBounds(240, 60, 200, 30);
+			contentPane.add(cmbClient);
+		} catch (RemoteException ea) {
+			// TODO Auto-generated catch block
+			ea.printStackTrace();
+		}
+		
 	}
 
 	public addAppointment() {
@@ -59,9 +75,8 @@ public class addAppointment extends JFrame {
 		lblDate.setBounds(100, 180, 100, 30);
 		contentPane.add(lblDate);
 		
-		cmbClient = new JComboBox<String>(values);
-		cmbClient.setBounds(240, 60, 200, 30);
-		contentPane.add(cmbClient);
+		fillClient();
+		
 		cmbLawyer = new JComboBox<String>(values);
 		cmbLawyer.setBounds(240, 100, 200, 30);
 		contentPane.add(cmbLawyer);
@@ -105,7 +120,7 @@ public class addAppointment extends JFrame {
 			     try {
 			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
 					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
-					System.out.println("Response: " + response.get_return());					
+					System.out.println("Response: " + response.get_return());	
 				
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
