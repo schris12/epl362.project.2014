@@ -10,11 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.EditClientStub.Edit_client;
 import webservices.SelectClientStub.Select_client;
 
 
@@ -47,16 +47,6 @@ public class editClient extends JFrame {
 			cmbClient = new JComboBox<String>(result);
 			cmbClient.setBounds(60, 50, 180, 30);
 			contentPane.add(cmbClient);
-			cmbClient.addItemListener(new ItemListener() {
-		        public void itemStateChanged(ItemEvent arg0) {
-		            String values = cmbClient.getSelectedItem().toString();
-		            String splitted [] = values.split(", ");
-		            txtClientID.setText(splitted[0]);
-		            String splitted2[] = splitted[1].split(",");
-		            txtClientName.setText(splitted2[0]);
-		            txtClientSurname.setText(splitted2[1]);
-		        }
-		    });
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
 			ea.printStackTrace();
@@ -80,6 +70,15 @@ public class editClient extends JFrame {
 		contentPane.setLayout(null);
 		
 		fillClient();
+		cmbClient.addItemListener(new ItemListener() {
+	        public void itemStateChanged(ItemEvent arg0) {
+	            String values = cmbClient.getSelectedItem().toString();
+	            String splitted [] = values.split(", ");
+	            txtClientID.setText(splitted[0]);
+	            txtClientName.setText(splitted[1]);
+	            txtClientSurname.setText(splitted[2]);
+	        }
+	    });
 		
 		JLabel lblClientID = new JLabel("ID:");
 		lblClientID.setBounds(300, 40, 80, 30);
@@ -106,7 +105,27 @@ public class editClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = txtClientID.getText();
+				String name = txtClientName.getText();
+				String surname = txtClientSurname.getText();	
 				
+				//Creating the Request
+				webservices.EditClientStub.Edit_client request;
+				request = new Edit_client();
+				request.setId(id);
+				request.setName(name);				
+				request.setSurname(surname);
+			     
+			     //Invoking the service
+			     try {
+			    	webservices.EditClientStub stub = new webservices.EditClientStub();
+					webservices.EditClientStub.Edit_clientResponse response = stub.edit_client(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
 			}
 		});
 		

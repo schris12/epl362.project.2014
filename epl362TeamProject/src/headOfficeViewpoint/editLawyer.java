@@ -46,16 +46,6 @@ public class editLawyer extends JFrame {
 			cmbLawyer = new JComboBox<String>(result);
 			cmbLawyer.setBounds(60, 50, 180, 30);
 			contentPane.add(cmbLawyer);
-			cmbLawyer.addItemListener(new ItemListener() {
-		        public void itemStateChanged(ItemEvent arg0) {
-		            String values = cmbLawyer.getSelectedItem().toString();
-		            String splitted [] = values.split(", ");
-		            txtLawyerID.setText(splitted[0]);
-		            String splitted2[] = splitted[1].split(",");
-		            txtLawyerName.setText(splitted2[0]);
-		            txtLawyerSurname.setText(splitted2[1]);
-		        }
-		    });
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
 			ea.printStackTrace();
@@ -78,7 +68,16 @@ public class editLawyer extends JFrame {
 		contentPane.setLayout(null);
 		
 		fillLawyer();
-				
+		cmbLawyer.addItemListener(new ItemListener() {
+	        public void itemStateChanged(ItemEvent arg0) {
+	            String values = cmbLawyer.getSelectedItem().toString();
+	            String splitted [] = values.split(", ");
+	            txtLawyerID.setText(splitted[0]);
+	            txtLawyerName.setText(splitted[1]);
+	            txtLawyerSurname.setText(splitted[2]);
+	        }
+	    });
+		
 		JLabel lblLawyerID = new JLabel("ID:");
 		lblLawyerID.setBounds(300, 40, 80, 30);
 		contentPane.add(lblLawyerID);
