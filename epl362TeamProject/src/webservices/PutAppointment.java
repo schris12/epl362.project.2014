@@ -23,6 +23,7 @@ public class PutAppointment {
 			java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			preparedStatement.setDate(3, sqlDate);
+			preparedStatement.setInt(4, 0);
 			preparedStatement.setString(5, branch_id);
 			int ret = preparedStatement.executeUpdate();
 			
