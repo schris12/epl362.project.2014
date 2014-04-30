@@ -2,19 +2,19 @@ package headOfficeViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import webservices.SelectLawyerStub.Select_lawyer;
-import legalStaffViewpoint.lawyerOptions;
 
 
 public class editLawyer extends JFrame {
@@ -25,7 +25,7 @@ public class editLawyer extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JComboBox<String> cmbLawyer;
-	private JTextField txtClientID,txtClientName,txtClientSurname;
+	private JTextField txtLawyerID,txtLawyerName,txtLawyerSurname;
 
 	/**
 	 * Launch the application.
@@ -46,6 +46,16 @@ public class editLawyer extends JFrame {
 			cmbLawyer = new JComboBox<String>(result);
 			cmbLawyer.setBounds(60, 50, 180, 30);
 			contentPane.add(cmbLawyer);
+			cmbLawyer.addItemListener(new ItemListener() {
+		        public void itemStateChanged(ItemEvent arg0) {
+		            String values = cmbLawyer.getSelectedItem().toString();
+		            String splitted [] = values.split(", ");
+		            txtLawyerID.setText(splitted[0]);
+		            String splitted2[] = splitted[1].split(",");
+		            txtLawyerName.setText(splitted2[0]);
+		            txtLawyerSurname.setText(splitted2[1]);
+		        }
+		    });
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
 			ea.printStackTrace();
@@ -69,25 +79,25 @@ public class editLawyer extends JFrame {
 		
 		fillLawyer();
 				
-		JLabel lblClientID = new JLabel("ID:");
-		lblClientID.setBounds(300, 40, 80, 30);
-		contentPane.add(lblClientID);
-		JLabel lblClientName = new JLabel("Name:");
-		lblClientName.setBounds(300, 80, 80, 30);
-		contentPane.add(lblClientName);
-		JLabel lblClientSurname = new JLabel("Surname:");
-		lblClientSurname.setBounds(300, 120, 200, 30);
-		contentPane.add(lblClientSurname);
+		JLabel lblLawyerID = new JLabel("ID:");
+		lblLawyerID.setBounds(300, 40, 80, 30);
+		contentPane.add(lblLawyerID);
+		JLabel lblLawyerName = new JLabel("Name:");
+		lblLawyerName.setBounds(300, 80, 80, 30);
+		contentPane.add(lblLawyerName);
+		JLabel lblLawyerSurname = new JLabel("Surname:");
+		lblLawyerSurname.setBounds(300, 120, 200, 30);
+		contentPane.add(lblLawyerSurname);
 		
-		txtClientID = new JTextField();
-		txtClientID.setBounds(440, 40, 200, 30);
-		contentPane.add(txtClientID);
-		txtClientName = new JTextField();
-		txtClientName.setBounds(440, 80, 200, 30);
-		contentPane.add(txtClientName);
-		txtClientSurname = new JTextField();
-		txtClientSurname.setBounds(440, 120, 200, 30);
-		contentPane.add(txtClientSurname);
+		txtLawyerID = new JTextField();
+		txtLawyerID.setBounds(440, 40, 200, 30);
+		contentPane.add(txtLawyerID);
+		txtLawyerName = new JTextField();
+		txtLawyerName.setBounds(440, 80, 200, 30);
+		contentPane.add(txtLawyerName);
+		txtLawyerSurname = new JTextField();
+		txtLawyerSurname.setBounds(440, 120, 200, 30);
+		contentPane.add(txtLawyerSurname);
 
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(270, 300, 80, 30);
@@ -103,9 +113,9 @@ public class editLawyer extends JFrame {
 		contentPane.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtClientID.setText("");
-				txtClientName.setText("");
-				txtClientSurname.setText("");
+				txtLawyerID.setText("");
+				txtLawyerName.setText("");
+				txtLawyerSurname.setText("");
 			}
 		});
 		

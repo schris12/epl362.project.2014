@@ -2,6 +2,8 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
@@ -45,6 +47,16 @@ public class editClient extends JFrame {
 			cmbClient = new JComboBox<String>(result);
 			cmbClient.setBounds(60, 50, 180, 30);
 			contentPane.add(cmbClient);
+			cmbClient.addItemListener(new ItemListener() {
+		        public void itemStateChanged(ItemEvent arg0) {
+		            String values = cmbClient.getSelectedItem().toString();
+		            String splitted [] = values.split(", ");
+		            txtClientID.setText(splitted[0]);
+		            String splitted2[] = splitted[1].split(",");
+		            txtClientName.setText(splitted2[0]);
+		            txtClientSurname.setText(splitted2[1]);
+		        }
+		    });
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
 			ea.printStackTrace();
