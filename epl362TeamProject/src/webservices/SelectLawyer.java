@@ -26,7 +26,7 @@ public class SelectLawyer {
 			statement = connect.createStatement();
 			resultSet = statement
 					.executeQuery("select * from lawyer");
-
+			resultString.add("");
 			while (resultSet.next()) {
 				String lawyer_id = resultSet.getString("lawyer_id");
 				String name = resultSet.getString("name");
