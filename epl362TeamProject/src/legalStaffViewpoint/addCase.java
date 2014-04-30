@@ -2,6 +2,7 @@ package legalStaffViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.PutAppointmentStub.Put_appointment;
+import webservices.PutCaseStub.Put_case;
 import main.constants;
 import main.fillCombo;
 import main.httpRequest;
@@ -113,24 +116,56 @@ public class addCase extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StringBuilder param = new StringBuilder();
-				param.append("case_id=" + txtID.getText() + "&");
-				param.append("client_id=" + cmbClient.getSelectedItem().toString() + "&");
-				param.append("legal_id=" + cmbLawyer.getSelectedItem().toString() + "&"); // legal_id = lawyer_id ??
-				param.append("date_open=" + dateOpen.getText() + "&");
-				param.append("date_close=" + dateClose.getText() + "&");
-				param.append("risk=" + cmbRisk.getSelectedItem().toString() + "&");
-				param.append("type=" + cmbType.getSelectedItem().toString());				
-				String url = constants.getUrl();
-				url += "AddCase";
-				httpRequest http = new httpRequest();
-				try {
-					http.sendPost(url,param.toString());
-//						JOptionPane.showMessageDialog(null,"Client Input Successfull","Success!",JOptionPane.WARNING_MESSAGE);
-				} catch (Exception e1) {
-					e1.printStackTrace();
+//				StringBuilder param = new StringBuilder();
+//				param.append("case_id=" + txtID.getText() + "&");
+//				param.append("client_id=" + cmbClient.getSelectedItem().toString() + "&");
+//				param.append("legal_id=" + cmbLawyer.getSelectedItem().toString() + "&"); // legal_id = lawyer_id ??
+//				param.append("date_open=" + dateOpen.getText() + "&");
+//				param.append("date_close=" + dateClose.getText() + "&");
+//				param.append("risk=" + cmbRisk.getSelectedItem().toString() + "&");
+//				param.append("type=" + cmbType.getSelectedItem().toString());				
+//				String url = constants.getUrl();
+//				url += "AddCase";
+//				httpRequest http = new httpRequest();
+//				try {
+//					http.sendPost(url,param.toString());
+////						JOptionPane.showMessageDialog(null,"Client Input Successfull","Success!",JOptionPane.WARNING_MESSAGE);
+//				} catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
+				
+				/*Here*/
+				String client_id = cmbClient.getSelectedItem().toString();
+				String lawyer_id = cmbLawyer.getSelectedItem().toString();
+				String type = cmbType.getSelectedItem().toString();
+				String date_open = dateOpen.getText();
+				String date_close = dateClose.getText();
+				int risk =Integer.parseInt(cmbRisk.getSelectedItem().toString());
+				
+				//Creating the Request
+				webservices.PutCaseStub.Put_case request;
+				request = new Put_case();
+				request.setClient_id(client_id);
+				request.setLawyer_id(lawyer_id);				
+				request.setDate_open(date_open);
+				request.setDate_close(date_close);
+				request.setRisk(risk);
+				
+
+			     
+			     //Invoking the service
+			     try {
+			    	webservices.PutCaseStub stub = new webservices.PutCaseStub();
+					webservices.PutCaseStub.Put_caseResponse response = stub.put_case(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
 				}	
 			}
+
+			
 		});
 		
 		JButton btnBack = new JButton("Back");
