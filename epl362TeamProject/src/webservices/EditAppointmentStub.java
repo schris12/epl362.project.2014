@@ -1969,6 +1969,51 @@
                             
 
                         /**
+                        * field for Missed
+                        */
+
+                        
+                                    protected int localMissed ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localMissedTracker = false ;
+
+                           public boolean isMissedSpecified(){
+                               return localMissedTracker;
+                           }
+
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return int
+                           */
+                           public  int getMissed(){
+                               return localMissed;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Missed
+                               */
+                               public void setMissed(int param){
+                            
+                                       // setting primitive attribute tracker to true
+                                       localMissedTracker =
+                                       param != java.lang.Integer.MIN_VALUE;
+                                   
+                                            this.localMissed=param;
+                                    
+
+                               }
+                            
+
+                        /**
                         * field for Branch_id
                         */
 
@@ -2138,6 +2183,19 @@
                                                    xmlWriter.writeCharacters(localDate);
                                             
                                           }
+                                    
+                                   xmlWriter.writeEndElement();
+                             } if (localMissedTracker){
+                                    namespace = "http://webservices";
+                                    writeStartElement(null, namespace, "missed", xmlWriter);
+                             
+                                               if (localMissed==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("missed cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localMissed));
+                                               }
                                     
                                    xmlWriter.writeEndElement();
                              } if (localBranch_idTracker){
@@ -2367,7 +2425,13 @@
                                  
                                          elementList.add(localDate==null?null:
                                          org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDate));
-                                    } if (localBranch_idTracker){
+                                    } if (localMissedTracker){
+                                      elementList.add(new javax.xml.namespace.QName("http://webservices",
+                                                                      "missed"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localMissed));
+                            } if (localBranch_idTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://webservices",
                                                                       "branch_id"));
                                  
@@ -2559,6 +2623,32 @@
                                 
                                     else {
                                         
+                                    }
+                                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://webservices","missed").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"missed" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setMissed(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                    else {
+                                        
+                                               object.setMissed(java.lang.Integer.MIN_VALUE);
+                                           
                                     }
                                 
                                     

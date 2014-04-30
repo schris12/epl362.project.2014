@@ -10,7 +10,7 @@ package webservices;
 
 public class EditAppointmentParseExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1398871518879L;
+    private static final long serialVersionUID = 1398880577301L;
     
     private webservices.EditAppointmentStub.EditAppointmentParseException faultMessage;
 
