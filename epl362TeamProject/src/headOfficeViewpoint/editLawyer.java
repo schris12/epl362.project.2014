@@ -2,8 +2,10 @@ package headOfficeViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -11,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.SelectLawyerStub.Select_lawyer;
 import legalStaffViewpoint.lawyerOptions;
 
 
@@ -21,6 +24,7 @@ public class editLawyer extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JComboBox<String> cmbLawyer;
 	private JTextField txtClientID,txtClientName,txtClientSurname;
 
 	/**
@@ -30,6 +34,24 @@ public class editLawyer extends JFrame {
 		new editLawyer();
 	}
 
+	public void fillLawyer(){
+		webservices.SelectLawyerStub.Select_lawyer request;
+		request = new Select_lawyer();
+	     
+	     //Invoking the service
+	     try {
+	    	webservices.SelectLawyerStub stub = new webservices.SelectLawyerStub();
+			webservices.SelectLawyerStub.Select_lawyerResponse response = stub.select_lawyer(request);
+			String[] result = response.get_return();			
+			cmbLawyer = new JComboBox<String>(result);
+			cmbLawyer.setBounds(60, 50, 180, 30);
+			contentPane.add(cmbLawyer);
+		} catch (RemoteException ea) {
+			// TODO Auto-generated catch block
+			ea.printStackTrace();
+		}
+		
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -45,10 +67,8 @@ public class editLawyer extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList<String> clientList = new JList<String>();
-		clientList.setBounds(60, 50, 180, 300);
-		contentPane.add(clientList);
-		
+		fillLawyer();
+				
 		JLabel lblClientID = new JLabel("ID:");
 		lblClientID.setBounds(300, 40, 80, 30);
 		contentPane.add(lblClientID);
