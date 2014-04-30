@@ -2,14 +2,18 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import webservices.SelectClientStub.Select_client;
 
 
 public class editClient extends JFrame {
@@ -19,6 +23,7 @@ public class editClient extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JComboBox<String> cmbClient;
 	private JTextField txtClientID,txtClientName,txtClientSurname;
 
 	/**
@@ -28,6 +33,25 @@ public class editClient extends JFrame {
 		new editClient();
 	}
 
+	public void fillClient(){
+		webservices.SelectClientStub.Select_client request;
+		request = new Select_client();
+	     
+	     //Invoking the service
+	     try {
+	    	webservices.SelectClientStub stub = new webservices.SelectClientStub();
+			webservices.SelectClientStub.Select_clientResponse response = stub.select_client(request);
+			String[] result = response.get_return();
+			cmbClient = new JComboBox<String>(result);
+			cmbClient.setBounds(60, 50, 180, 30);
+			contentPane.add(cmbClient);
+		} catch (RemoteException ea) {
+			// TODO Auto-generated catch block
+			ea.printStackTrace();
+		}
+		
+	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -43,9 +67,7 @@ public class editClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList<String> clientList = new JList<String>();
-		clientList.setBounds(60, 50, 180, 300);
-		contentPane.add(clientList);
+		fillClient();
 		
 		JLabel lblClientID = new JLabel("ID:");
 		lblClientID.setBounds(300, 40, 80, 30);
