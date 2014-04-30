@@ -17,8 +17,8 @@ public class PutLawyer {
 			+ "(?,?,?)";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
 			preparedStatement.setString(1, id);
-			preparedStatement.setString(1, name);
-			preparedStatement.setString(2, surname);
+			preparedStatement.setString(2, name);
+			preparedStatement.setString(3, surname);
 			int ret = preparedStatement.executeUpdate();
 			
 			con.close();
