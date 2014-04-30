@@ -2,6 +2,7 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.PutAppointmentStub.Put_appointment;
 import main.constants;
 import main.httpRequest;
 
@@ -72,19 +74,29 @@ public class addClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StringBuilder param = new StringBuilder();
-				param.append("ID=" + txtClientID.getText() + "&");
-				param.append("Name=" + txtClientName.getText() + "&");
-				param.append("Surname=" + txtClientSurname.getText());
-				String url = constants.getUrl();
-				url += "AddClient";
-				httpRequest http = new httpRequest();
-				try {
-					http.sendPost(url,param.toString());
-//						JOptionPane.showMessageDialog(null,"Client Input Successfull","Success!",JOptionPane.WARNING_MESSAGE);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}	
+				String id = txtClientID.getText();
+				String name = txtClientName.getText();
+				String surname = txtClientSurname.getText();	
+				
+				//Creating the Request
+//				webservices.PutAppointmentStub.Put_appointment  request;
+//				request = new Put_appointment();
+//				request.setClient_id(client_id);
+//				request.setLawyer_id(lawyer_id);				
+//				request.setDate(date);
+//				request.setBranch_id(branch_id);
+//
+//			     
+//			     //Invoking the service
+//			     try {
+//			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
+//					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
+//					System.out.println("Response: " + response.get_return());					
+//				
+//				} catch (RemoteException ea) {
+//					// TODO Auto-generated catch block
+//					ea.printStackTrace();
+//				}	
 			}
 		});
 		
