@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import legalStaffViewpoint.legalStaffOptions;
-import main.legalRecords;
+import main.MainScreen;
 
 public class receptionistOptions {
 
@@ -76,7 +76,7 @@ public class receptionistOptions {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
-				new legalRecords();
+				new MainScreen();
 			}
 		});
 		
