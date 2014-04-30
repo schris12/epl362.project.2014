@@ -15,9 +15,9 @@ public class EditClient {
 			String insertTableSQL = "UPDATE client"
 			+ " SET name=?, surname=? WHERE client_id=?";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
-			preparedStatement.setString(1, id);
-			preparedStatement.setString(2, name);
-			preparedStatement.setString(3, surname);
+			preparedStatement.setString(3, id);
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, surname);
 			int ret = preparedStatement.executeUpdate();
 			
 			con.close();
