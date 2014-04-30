@@ -2,6 +2,7 @@ package headOfficeViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.PutClientStub.Put_client;
+import webservices.PutLawyerStub.Put_lawyer;
 import legalStaffViewpoint.lawyerOptions;
 
 
@@ -70,7 +73,27 @@ public class addLawyer extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = txtLawyerID.getText();
+				String name = txtLawyerName.getText();
+				String surname = txtLawyerSurname.getText();	
 
+				//Creating the Request
+				webservices.PutLawyerStub.Put_lawyer  request;
+				request = new Put_lawyer();
+				request.setId(id);
+				request.setName(name);				
+				request.setSurname(surname);
+
+				//Invoking the service
+				try {
+					webservices.PutLawyerStub stub = new webservices.PutLawyerStub();
+					webservices.PutLawyerStub.Put_lawyerResponse response = stub.put_lawyer(request);
+					System.out.println("Response: " + response.get_return());					
+
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}	
 			}
 		});
 		

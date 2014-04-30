@@ -13,7 +13,7 @@ public class PutLawyer {
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
 			String insertTableSQL = "INSERT INTO lawyer"
-			+ "(lawyer, name, surname) VALUES"
+			+ "(lawyer_id, name, surname) VALUES"
 			+ "(?,?,?)";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
 			preparedStatement.setString(1, id);

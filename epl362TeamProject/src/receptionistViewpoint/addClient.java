@@ -71,12 +71,14 @@ public class addClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = txtClientID.getText();
 				String name = txtClientName.getText();
 				String surname = txtClientSurname.getText();	
 				
 				//Creating the Request
-				webservices.PutClientStub.Put_client  request;
+				webservices.PutClientStub.Put_client request;
 				request = new Put_client();
+				request.setId(id);
 				request.setName(name);				
 				request.setSurname(surname);
 			     
