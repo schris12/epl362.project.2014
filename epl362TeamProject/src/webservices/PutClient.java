@@ -13,12 +13,11 @@ public class PutClient {
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
 			String insertTableSQL = "INSERT INTO client"
-			+ "(ID, Name, Surname) VALUES"
-			+ "(?,?,?)";
+			+ "(Name, Surname) VALUES"
+			+ "(?,?)";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
-			preparedStatement.setString(1, id);
-			preparedStatement.setString(2, name);
-			preparedStatement.setString(3, surname);
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, surname);
 			int ret = preparedStatement.executeUpdate();
 			
 			con.close();
