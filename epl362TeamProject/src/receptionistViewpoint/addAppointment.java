@@ -12,6 +12,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import webservices.PutAppointmentParseExceptionException;
@@ -25,7 +26,7 @@ public class addAppointment extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbClient;
 	private JComboBox<String> cmbLawyer;
-	private JComboBox<String> cmbBranch;
+	private JTextField cmbBranch;
 	
 	public static void main(String[] args) {
 		new addAppointment();
@@ -98,7 +99,7 @@ public class addAppointment extends JFrame {
 		fillClient();
 		fillLawyer();
 		
-		cmbBranch = new JComboBox<String>();
+		cmbBranch = new JTextField();
 		cmbBranch.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbBranch);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -120,9 +121,9 @@ public class addAppointment extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String client_id = cmbClient.getSelectedItem().toString();
-				String lawyer_id = cmbLawyer.getSelectedItem().toString();
-				String branch_id = cmbBranch.getSelectedItem().toString();
+				String client_id = cmbClient.getSelectedItem().toString().split(", ")[0];
+				String lawyer_id = cmbLawyer.getSelectedItem().toString().split(", ")[0];
+				String branch_id = cmbBranch.getText();
 				String date = dateTextField.getText();		
 				
 				//Creating the Request
