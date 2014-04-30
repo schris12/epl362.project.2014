@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import webservices.PutAppointmentParseExceptionException;
 import webservices.PutAppointmentStub.Put_appointment;
 import webservices.SelectClientStub.Select_client;
+import webservices.SelectLawyerStub.Select_lawyer;
 
 public class addAppointment extends JFrame {
 
@@ -49,6 +49,27 @@ public class addAppointment extends JFrame {
 		}
 		
 	}
+	
+	public void fillLawyer(){
+		webservices.SelectLawyerStub.Select_lawyer request;
+		request = new Select_lawyer();
+	     
+	     //Invoking the service
+	     try {
+	    	webservices.SelectLawyerStub stub = new webservices.SelectLawyerStub();
+			webservices.SelectLawyerStub.Select_lawyerResponse response = stub.select_lawyer(request);
+			String[] result = response.get_return();			
+			cmbLawyer = new JComboBox<String>(result);
+			cmbLawyer.setBounds(240, 100, 200, 30);
+			contentPane.add(cmbLawyer);
+		} catch (RemoteException ea) {
+			// TODO Auto-generated catch block
+			ea.printStackTrace();
+		}
+		
+	}
+	
+	
 
 	public addAppointment() {
 		
@@ -75,10 +96,8 @@ public class addAppointment extends JFrame {
 		contentPane.add(lblDate);
 		
 		fillClient();
+		fillLawyer();
 		
-		cmbLawyer = new JComboBox<String>();
-		cmbLawyer.setBounds(240, 100, 200, 30);
-		contentPane.add(cmbLawyer);
 		cmbBranch = new JComboBox<String>();
 		cmbBranch.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbBranch);
