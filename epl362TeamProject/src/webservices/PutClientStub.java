@@ -438,48 +438,6 @@
             
 
                         /**
-                        * field for Id
-                        */
-
-                        
-                                    protected java.lang.String localId ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localIdTracker = false ;
-
-                           public boolean isIdSpecified(){
-                               return localIdTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  java.lang.String getId(){
-                               return localId;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param Id
-                               */
-                               public void setId(java.lang.String param){
-                            localIdTracker = true;
-                                   
-                                            this.localId=param;
-                                    
-
-                               }
-                            
-
-                        /**
                         * field for Name
                         */
 
@@ -621,25 +579,7 @@
 
                
                    }
-                if (localIdTracker){
-                                    namespace = "http://webservices";
-                                    writeStartElement(null, namespace, "id", xmlWriter);
-                             
-
-                                          if (localId==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localId);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             } if (localNameTracker){
+                if (localNameTracker){
                                     namespace = "http://webservices";
                                     writeStartElement(null, namespace, "name", xmlWriter);
                              
@@ -860,13 +800,7 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                 if (localIdTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://webservices",
-                                                                      "id"));
-                                 
-                                         elementList.add(localId==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localId));
-                                    } if (localNameTracker){
+                 if (localNameTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://webservices",
                                                                       "name"));
                                  
@@ -954,34 +888,6 @@
                     
                     reader.next();
                 
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://webservices","id").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setId(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                    }
-                                
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
