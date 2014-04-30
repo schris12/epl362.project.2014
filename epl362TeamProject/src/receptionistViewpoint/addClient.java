@@ -7,14 +7,11 @@ import java.rmi.RemoteException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import webservices.PutAppointmentStub.Put_appointment;
-import main.constants;
-import main.httpRequest;
+import webservices.PutClientStub.Put_client;
 
 
 public class addClient extends JFrame {
@@ -79,24 +76,21 @@ public class addClient extends JFrame {
 				String surname = txtClientSurname.getText();	
 				
 				//Creating the Request
-//				webservices.PutAppointmentStub.Put_appointment  request;
-//				request = new Put_appointment();
-//				request.setClient_id(client_id);
+				webservices.PutClientStub.Put_client  request;
+				request = new Put_client();
 //				request.setLawyer_id(lawyer_id);				
 //				request.setDate(date);
-//				request.setBranch_id(branch_id);
-//
-//			     
-//			     //Invoking the service
-//			     try {
-//			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
+			     
+			     //Invoking the service
+			     try {
+			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
 //					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
 //					System.out.println("Response: " + response.get_return());					
-//				
-//				} catch (RemoteException ea) {
-//					// TODO Auto-generated catch block
-//					ea.printStackTrace();
-//				}	
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}	
 			}
 		});
 		

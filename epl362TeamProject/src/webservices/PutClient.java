@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class PutClient {
-	public int put_client(String id, String name, String surname) {
+	public int put_client(String name, String surname) {
 		String dbUrl = "jdbc:mysql://localhost/362";
 		try {
 
@@ -22,7 +22,7 @@ public class PutClient {
 			
 			con.close();
 			return ret;		
-		} // end try
+		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
