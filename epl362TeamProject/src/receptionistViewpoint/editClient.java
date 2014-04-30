@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.DeleteClientStub.Delete_client;
 import webservices.EditClientStub.Edit_client;
 import webservices.SelectClientStub.Select_client;
 
@@ -145,7 +146,23 @@ public class editClient extends JFrame {
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String id = txtClientID.getText();
+				
+				//Creating the Request
+				webservices.DeleteClientStub.Delete_client request;
+				request = new Delete_client();
+				request.setId(id);
+			     
+			     //Invoking the service
+			     try {
+			    	webservices.DeleteClientStub stub = new webservices.DeleteClientStub();
+					webservices.DeleteClientStub.Delete_clientResponse response = stub.delete_client(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
 			}
 		});
 		
