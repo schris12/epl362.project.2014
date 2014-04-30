@@ -26,7 +26,7 @@ public class SelectCase {
 			statement = connect.createStatement();
 			resultSet = statement
 					.executeQuery("select * from case");
-
+			resultString.add("");
 			while (resultSet.next()) {
 				int case_id = resultSet.getInt("case_id");
 				String client_id = resultSet.getString("client_id");
