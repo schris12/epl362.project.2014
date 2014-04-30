@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class PutLawyer {
+	//put again
 	public int put_lawyer(String id, String name, String surname) {
 		String dbUrl = "jdbc:mysql://localhost/362";
 		try {
