@@ -19,6 +19,7 @@ import main.fillCombo;
 import main.httpRequest;
 
 
+import webservices.PutAppointmentParseExceptionException;
 import webservices.PutAppointmentStub.*;
 
 public class addAppointment extends JFrame {
@@ -109,6 +110,9 @@ public class addAppointment extends JFrame {
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
+				} catch (PutAppointmentParseExceptionException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}	
 			}
 		});
