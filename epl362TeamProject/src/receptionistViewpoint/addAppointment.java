@@ -26,7 +26,6 @@ public class addAppointment extends JFrame {
 	private JComboBox<String> cmbClient;
 	private JComboBox<String> cmbLawyer;
 	private JComboBox<String> cmbBranch;
-	private String[] values = { " ","1","2","3","4","5" };
 	
 	public static void main(String[] args) {
 		new addAppointment();
@@ -77,10 +76,10 @@ public class addAppointment extends JFrame {
 		
 		fillClient();
 		
-		cmbLawyer = new JComboBox<String>(values);
+		cmbLawyer = new JComboBox<String>();
 		cmbLawyer.setBounds(240, 100, 200, 30);
 		contentPane.add(cmbLawyer);
-		cmbBranch = new JComboBox<String>(values);
+		cmbBranch = new JComboBox<String>();
 		cmbBranch.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbBranch);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

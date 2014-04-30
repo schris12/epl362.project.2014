@@ -24,7 +24,7 @@ public class SelectClient {
 
 			statement = connect.createStatement();
 			resultSet = statement
-					.executeQuery("select * from 362.client");
+					.executeQuery("select * from client");
 
 			while (resultSet.next()) {
 				String client_id = resultSet.getString("client_id");
