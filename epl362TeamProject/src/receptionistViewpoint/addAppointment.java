@@ -2,6 +2,7 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -17,13 +18,18 @@ import main.constants;
 import main.fillCombo;
 import main.httpRequest;
 
+import webServices.PutAppointmentStub;
+import webServices.PutAppointmentStub.*;
 
 public class addAppointment extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JComboBox<String> cmbClient,cmbLawyer,cmbBranch;
-
+	private JComboBox<String> cmbClient;
+	private JComboBox<String> cmbLawyer;
+	private JComboBox<String> cmbBranch;
+	private String[] values = { " ","1","2","3","4","5" };
+	
 	public static void main(String[] args) {
 		new addAppointment();
 	}
@@ -52,24 +58,19 @@ public class addAppointment extends JFrame {
 		lblDate.setBounds(100, 180, 100, 30);
 		contentPane.add(lblDate);
 		
-		cmbClient = new JComboBox<String>();
+		cmbClient = new JComboBox<String>(values);
 		cmbClient.setBounds(240, 60, 200, 30);
 		contentPane.add(cmbClient);
-		cmbLawyer = new JComboBox<String>();
+		cmbLawyer = new JComboBox<String>(values);
 		cmbLawyer.setBounds(240, 100, 200, 30);
 		contentPane.add(cmbLawyer);
-		cmbBranch = new JComboBox<String>();
+		cmbBranch = new JComboBox<String>(values);
 		cmbBranch.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbBranch);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		final JFormattedTextField dateTextField = new JFormattedTextField(format);
 		dateTextField.setBounds(240, 180, 200, 30);
-		contentPane.add(dateTextField);
-		
-		//fill combo boxes
-		fillCombo.fillClient(cmbClient);
-		fillCombo.fillLawyer(cmbLawyer);
-		fillCombo.fillType(cmbBranch);
+		contentPane.add(dateTextField);	
 		
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
@@ -85,21 +86,32 @@ public class addAppointment extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StringBuilder param = new StringBuilder();
-				param.append("client_id=" + cmbClient.getSelectedItem().toString() + "&");
-				param.append("lawyer_id=" + cmbLawyer.getSelectedItem().toString() + "&");
-				param.append("date=" + dateTextField.getText() + "&");
-//				param.append("appointment_id" +) auto generated?
-//				param.append("missed")
-				param.append("branch_id" + cmbBranch.getSelectedItem().toString()); 
-				String url = constants.getUrl();
-				url += "AddAppointment";
-				httpRequest http = new httpRequest();
-				try {
-					http.sendPost(url,param.toString());
-//						JOptionPane.showMessageDialog(null,"Client Input Successfull","Success!",JOptionPane.WARNING_MESSAGE);
-				} catch (Exception e1) {
-					e1.printStackTrace();
+				int client_id = Integer.parseInt(cmbClient.getSelectedItem().toString());
+
+				int lawyer_id = Integer.parseInt(cmbLawyer.getSelectedItem().toString());
+				
+				int branch_id = Integer.parseInt(cmbBranch.getSelectedItem().toString());
+				
+				String date = dateTextField.getText();		
+				
+				//Creating the Request
+				webServices.PutAppointmentStub.Put_appointment  request;
+				request = new Put_appointment();
+				request.setClient_id(client_id);
+				request.setLawyer_id(lawyer_id);				
+				request.setDate(date);
+				request.setBranch_id(branch_id);
+
+			     
+			     //Invoking the service
+			     try {
+			    	PutAppointmentStub stub = new PutAppointmentStub();
+					webServices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
 				}	
 			}
 		});
