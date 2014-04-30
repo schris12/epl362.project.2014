@@ -87,11 +87,8 @@ public class addAppointment extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String client_id = cmbClient.getSelectedItem().toString();
-
 				String lawyer_id = cmbLawyer.getSelectedItem().toString();
-				
 				String branch_id = cmbBranch.getSelectedItem().toString();
-				
 				String date = dateTextField.getText();		
 				
 				//Creating the Request
