@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.DeleteLawyerStub.Delete_lawyer;
 import webservices.SelectLawyerStub.Select_lawyer;
 
 
@@ -123,7 +124,23 @@ public class editLawyer extends JFrame {
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String id = txtLawyerID.getText();
+				
+				//Creating the Request
+				webservices.DeleteLawyerStub.Delete_lawyer request;
+				request = new Delete_lawyer();
+				request.setId(id);
+			     
+			     //Invoking the service
+			     try {
+			    	webservices.DeleteLawyerStub stub = new webservices.DeleteLawyerStub();
+					webservices.DeleteLawyerStub.Delete_lawyerResponse response = stub.delete_lawyer(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
 			}
 		});
 		
