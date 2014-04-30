@@ -127,6 +127,9 @@ public class editClient extends JFrame {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
 				}
+			     
+			 recordScr.dispose();
+			 JFrame recordScr = new JFrame();
 			}
 		});
 		
@@ -163,6 +166,8 @@ public class editClient extends JFrame {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
 				}
+			     recordScr.dispose();
+				 JFrame recordScr = new JFrame();
 			}
 		});
 		
