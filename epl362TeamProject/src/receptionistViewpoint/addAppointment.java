@@ -18,8 +18,8 @@ import main.constants;
 import main.fillCombo;
 import main.httpRequest;
 
-import webServices.PutAppointmentStub;
-import webServices.PutAppointmentStub.*;
+
+import webservices.PutAppointmentStub.*;
 
 public class addAppointment extends JFrame {
 
@@ -86,16 +86,16 @@ public class addAppointment extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int client_id = Integer.parseInt(cmbClient.getSelectedItem().toString());
+				String client_id = cmbClient.getSelectedItem().toString();
 
-				int lawyer_id = Integer.parseInt(cmbLawyer.getSelectedItem().toString());
+				String lawyer_id = cmbLawyer.getSelectedItem().toString();
 				
-				int branch_id = Integer.parseInt(cmbBranch.getSelectedItem().toString());
+				String branch_id = cmbBranch.getSelectedItem().toString();
 				
 				String date = dateTextField.getText();		
 				
 				//Creating the Request
-				webServices.PutAppointmentStub.Put_appointment  request;
+				webservices.PutAppointmentStub.Put_appointment  request;
 				request = new Put_appointment();
 				request.setClient_id(client_id);
 				request.setLawyer_id(lawyer_id);				
@@ -105,8 +105,8 @@ public class addAppointment extends JFrame {
 			     
 			     //Invoking the service
 			     try {
-			    	PutAppointmentStub stub = new PutAppointmentStub();
-					webServices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
+			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
+					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
 					System.out.println("Response: " + response.get_return());					
 				
 				} catch (RemoteException ea) {
