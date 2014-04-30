@@ -13,7 +13,7 @@ public class EditClient {
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
 			String insertTableSQL = "UPDATE client"
-			+ " SET (name=?, surname=?) WHERE (client_id=?)";
+			+ " SET name=?, surname=? WHERE client_id=?";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, name);
