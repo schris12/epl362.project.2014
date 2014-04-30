@@ -23,7 +23,7 @@ public class SelectAppointment {
 
 			statement = connect.createStatement();
 			resultSet = statement
-					.executeQuery("select * from 362.appointments");
+					.executeQuery("select * from appointments");
 
 			while (resultSet.next()) {
 				String client_id = resultSet.getString("client_id");
