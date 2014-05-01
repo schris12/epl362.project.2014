@@ -2,11 +2,14 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -28,35 +31,38 @@ public class editAppointment extends JFrame {
 	private JTextField cmbLawyer;
 	private JTextField cmbBranch;
 	private JComboBox<String> cmbAppoint;
-	
+	private JFormattedTextField dateTextField;
+	private JLabel txtAppoint;
+	private JCheckBox missed;
+
 	public static void main(String[] args) {
 		new editAppointment();
 	}
-	
 
-	public void fillLawyer(){
+	public void fillLawyer() {
 		webservices.SelectAppointmentStub.Select_appointment request;
 		request = new Select_appointment();
-	     
-	     //Invoking the service
-	     try {
-	    	webservices.SelectAppointmentStub stub = new webservices.SelectAppointmentStub();
-	    	webservices.SelectAppointmentStub.Select_appointmentResponse response = stub.select_appointment(request);
-			String[] result = response.get_return();			
+
+		// Invoking the service
+		try {
+			webservices.SelectAppointmentStub stub = new webservices.SelectAppointmentStub();
+			webservices.SelectAppointmentStub.Select_appointmentResponse response = stub
+					.select_appointment(request);
+			String[] result = response.get_return();
 			cmbAppoint = new JComboBox<String>(result);
-			cmbAppoint.setBounds(310, 60, 200, 30);
+			cmbAppoint.setBounds(450, 60, 200, 30);
 			contentPane.add(cmbAppoint);
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
 			ea.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public editAppointment() {
 		
 		final JFrame addScr = new JFrame();
-		
+				
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 643, 337);
 		contentPane = new JPanel();
@@ -64,18 +70,24 @@ public class editAppointment extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblClient = new JLabel("Select Client:");
+		JLabel lblClient = new JLabel("Client:");
 		lblClient.setBounds(100, 60, 100, 30);
 		contentPane.add(lblClient);
-		JLabel lblLawyer = new JLabel("Select Lawyer:");
+		JLabel lblLawyer = new JLabel("Lawyer:");
 		lblLawyer.setBounds(100, 100, 100, 30);
 		contentPane.add(lblLawyer);
-		JLabel lblBranch = new JLabel("Select Branch:");
+		JLabel lblBranch = new JLabel("Branch:");
 		lblBranch.setBounds(100, 140, 100, 30);
 		contentPane.add(lblBranch);
 		JLabel lblDate = new JLabel("Date:");
 		lblDate.setBounds(100, 180, 100, 30);
 		contentPane.add(lblDate);
+		JLabel lblAppoint = new JLabel("Appointment No:");
+		lblAppoint.setBounds(100, 220, 100, 30);
+		contentPane.add(lblAppoint);
+		JLabel lblMissed = new JLabel("Appoint. Missed:");
+		lblMissed.setBounds(100, 260, 100, 30);
+		contentPane.add(lblMissed);
 		
 		cmbClient = new JTextField();
 		cmbClient.setBounds(240, 60, 200, 30);
@@ -89,16 +101,45 @@ public class editAppointment extends JFrame {
 		cmbBranch.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbBranch);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		final JFormattedTextField dateTextField = new JFormattedTextField(format);
+		dateTextField = new JFormattedTextField(format);
 		dateTextField.setBounds(240, 180, 200, 30);
 		contentPane.add(dateTextField);	
+		
+		txtAppoint = new JLabel();
+		txtAppoint.setBounds(240, 220, 200, 30);
+		contentPane.add(txtAppoint);
+		
+		missed = new JCheckBox();
+		missed.setBounds(240, 260, 200, 30);
+		contentPane.add(missed);
+		
+		fillLawyer();
+		cmbAppoint.addItemListener(new ItemListener() {
+	        public void itemStateChanged(ItemEvent arg0) {
+	            String values = cmbAppoint.getSelectedItem().toString();
+	            String splitted [] = values.split(", ");
+	            cmbClient.setText(splitted[0]);
+	            cmbLawyer.setText(splitted[1]);
+	            dateTextField.setText(splitted[2]);
+	            txtAppoint.setText(splitted[3]);
+	            cmbBranch.setText(splitted[5]);
+	            
+	        }
+	    });
+		
+		
 		
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				 cmbClient.setText("");
+		         cmbLawyer.setText("");
+		         dateTextField.setText("");
+		         txtAppoint.setText("");
+		         cmbBranch.setText("");
+		         missed.setSelected(false);
 			}
 		});
 		
@@ -168,5 +209,4 @@ public class editAppointment extends JFrame {
 		addScr.setSize(700, 400);
 		addScr.setVisible(true);
 	}
-
 }

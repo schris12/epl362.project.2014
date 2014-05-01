@@ -32,7 +32,7 @@ public class SelectAppointment {
 				String appointment_id = resultSet.getString("appointment_id");
 				String missed = resultSet.getString("missed");
 				String branch_id = resultSet.getString("branch_id");
-				resultString.add(client_id+","+lawyer_id+", "+date+", "+appointment_id+", "+missed+", "+branch_id);
+				resultString.add(client_id+", "+lawyer_id+", "+date+", "+appointment_id+", "+missed+", "+branch_id);
 			}
 
 			connect.close();
