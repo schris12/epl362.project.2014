@@ -13,28 +13,27 @@ import javax.swing.border.EmptyBorder;
 
 import webservices.PutClientStub.Put_client;
 
-
 public class addClient extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txtClientID,txtClientName,txtClientSurname;
+	private JTextField txtClientID, txtClientName, txtClientSurname;
 
 	public static void main(String[] args) {
 		new addClient();
 	}
 
 	public addClient() {
-		
+
 		final JFrame addScr = new JFrame();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 643, 337);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblClientID = new JLabel("ID:");
 		lblClientID.setBounds(100, 60, 80, 30);
 		contentPane.add(lblClientID);
@@ -44,7 +43,7 @@ public class addClient extends JFrame {
 		JLabel lblClientSurname = new JLabel("Surname:");
 		lblClientSurname.setBounds(100, 140, 200, 30);
 		contentPane.add(lblClientSurname);
-		
+
 		txtClientID = new JTextField();
 		txtClientID.setBounds(240, 60, 200, 30);
 		contentPane.add(txtClientID);
@@ -54,7 +53,7 @@ public class addClient extends JFrame {
 		txtClientSurname = new JTextField();
 		txtClientSurname.setBounds(240, 140, 200, 30);
 		contentPane.add(txtClientSurname);
-		
+
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
@@ -65,7 +64,7 @@ public class addClient extends JFrame {
 				txtClientSurname.setText("");
 			}
 		});
-		
+
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(220, 320, 80, 30);
 		contentPane.add(btnSave);
@@ -73,28 +72,33 @@ public class addClient extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String id = txtClientID.getText();
 				String name = txtClientName.getText();
-				String surname = txtClientSurname.getText();	
-				
-				//Creating the Request
+				String surname = txtClientSurname.getText();
+
+				// Creating the Request
 				webservices.PutClientStub.Put_client request;
 				request = new Put_client();
 				request.setId(id);
-				request.setName(name);				
+				request.setName(name);
 				request.setSurname(surname);
-			     
-			     //Invoking the service
-			     try {
-			    	webservices.PutClientStub stub = new webservices.PutClientStub();
-					webservices.PutClientStub.Put_clientResponse response = stub.put_client(request);
-					System.out.println("Response: " + response.get_return());					
-				
+
+				// Invoking the service
+				try {
+					webservices.PutClientStub stub = new webservices.PutClientStub();
+					webservices.PutClientStub.Put_clientResponse response = stub
+							.put_client(request);
+					System.out.println("Response: " + response.get_return());
+
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
-				}	
+				}
+
+				txtClientID.setText("");
+				txtClientName.setText("");
+				txtClientSurname.setText("");
 			}
 		});
-		
+
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(310, 320, 80, 30);
 		contentPane.add(btnBack);
@@ -108,15 +112,14 @@ public class addClient extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(64, 75, 508, 172);
 		contentPane.add(panel);
-		
+
 		JLabel lblNewLabel = new JLabel("Add Client");
 		lblNewLabel.setBounds(200, 11, 155, 32);
 		contentPane.add(lblNewLabel);
-		
+
 		addScr.add(contentPane);
 		addScr.setSize(700, 400);
 		addScr.setVisible(true);
 	}
-	
-	
+
 }

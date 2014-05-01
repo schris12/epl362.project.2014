@@ -18,9 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import webservices.DeleteAppointmentStub.Delete_appointment;
+import webservices.EditAppointmentParseExceptionException;
+import webservices.EditAppointmentStub.Edit_appointment;
 import webservices.PutAppointmentParseExceptionException;
-import webservices.DeleteLawyerStub.Delete_lawyer;
-import webservices.PutAppointmentStub.Put_appointment;
 import webservices.SelectAppointmentStub.Select_appointment;
 
 public class editAppointment extends JFrame {
@@ -146,9 +147,26 @@ public class editAppointment extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(220, 320, 80, 30);
 		contentPane.add(btnDelete);
-		btnClear.addActionListener(new ActionListener() {
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int appointment = Integer.parseInt(txtAppoint.getText()); 
 				
+				//Creating the Request
+				webservices.DeleteAppointmentStub.Delete_appointment request;
+				request = new Delete_appointment();
+				request.setId(appointment);
+							     
+			     //Invoking the service
+			     try {
+			    	webservices.DeleteAppointmentStub stub = new webservices.DeleteAppointmentStub();
+			    	webservices.DeleteAppointmentStub.Delete_appointmentResponse response = stub.delete_appointment(request);
+					System.out.println("Response: " + response.get_return());	
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}	
+			     
 			}
 		});
 		
@@ -160,27 +178,31 @@ public class editAppointment extends JFrame {
 				String client_id = cmbClient.getText().toString().split(", ")[0];
 				String lawyer_id = cmbLawyer.getText().toString().split(", ")[0];
 				String branch_id = cmbBranch.getText();
-				String date = dateTextField.getText();		
+				String ap_id = txtAppoint.getText();
+				String date = dateTextField.getText();
+				int missedValue= (missed.isSelected())? 1:0;
 				
 				//Creating the Request
-				webservices.PutAppointmentStub.Put_appointment  request;
-				request = new Put_appointment();
+				webservices.EditAppointmentStub.Edit_appointment request;
+				request = new Edit_appointment();
+				request.setAppointment_id(ap_id);
 				request.setClient_id(client_id);
 				request.setLawyer_id(lawyer_id);				
 				request.setDate(date);
+				request.setMissed(missedValue);
 				request.setBranch_id(branch_id);
 
 			     
 			     //Invoking the service
 			     try {
-			    	webservices.PutAppointmentStub stub = new webservices.PutAppointmentStub();
-					webservices.PutAppointmentStub.Put_appointmentResponse response = stub.put_appointment(request);
+			    	 webservices.EditAppointmentStub stub = new webservices.EditAppointmentStub();
+			    	webservices.EditAppointmentStub.Edit_appointmentResponse response = stub.edit_appointment(request);
 					System.out.println("Response: " + response.get_return());	
 				
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
-				} catch (PutAppointmentParseExceptionException e1) {
+				} catch (EditAppointmentParseExceptionException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}	

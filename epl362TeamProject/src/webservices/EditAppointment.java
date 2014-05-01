@@ -14,9 +14,9 @@ public class EditAppointment {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
-			String insertTableSQL = "UPDATE `appointments` SET `client_id`=?,"
-					+ "`lawyer_id`=?,`date`=?,`missed`=?,`branch_id`=? "
-					+ "WHERE `appointment_id`=?";
+			String insertTableSQL = "UPDATE appointments SET client_id=?,"
+					+ "lawyer_id=?,date=?,missed=?,branch_id=? "
+					+ "WHERE appointment_id=?";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
 			preparedStatement.setString(1, client_id);
 			preparedStatement.setString(2, lawyer_id);
