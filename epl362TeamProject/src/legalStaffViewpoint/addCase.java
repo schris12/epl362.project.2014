@@ -137,11 +137,6 @@ public class addCase extends JFrame {
 		cmbRisk.setBounds(240, 300, 200, 30);
 		contentPane.add(cmbRisk);
 
-		// fill combo boxes
-		fillCombo.fillClient(cmbClient);
-		fillCombo.fillLawyer(cmbLawyer);
-		// fillCombo.fillType(cmbType);
-
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 350, 80, 30);
 		contentPane.add(btnClear);
@@ -186,15 +181,12 @@ public class addCase extends JFrame {
 				// }
 
 				/* Here */
-				String client_id = cmbClient.getSelectedItem().toString()
-						.split(", ")[0];
-				String lawyer_id = cmbLawyer.getSelectedItem().toString()
-						.split(", ")[0];
-				String type = cmbType.getText().toString();
+				String client_id = cmbClient.getSelectedItem().toString().split(", ")[0];
+				String lawyer_id = cmbLawyer.getSelectedItem().toString().split(", ")[0];
+				int type = Integer.parseInt(cmbType.getText());
 				String date_open = dateOpen.getText();
 				String date_close = dateClose.getText();
-				int risk = Integer.parseInt(cmbRisk.getSelectedItem()
-						.toString());
+				int risk = Integer.parseInt(cmbRisk.getSelectedItem().toString());
 
 				// Creating the Request
 				webservices.PutCaseStub.Put_case request;
@@ -204,6 +196,7 @@ public class addCase extends JFrame {
 				request.setDate_open(date_open);
 				request.setDate_close(date_close);
 				request.setRisk(risk);
+				request.setType(type);
 
 				// Invoking the service
 				try {
@@ -215,9 +208,7 @@ public class addCase extends JFrame {
 				} catch (PutCaseParseExceptionException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-
-				catch (RemoteException ea) {
+				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
 				}

@@ -10,7 +10,7 @@ package webservices;
 
 public class PutCaseParseExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1398959683344L;
+    private static final long serialVersionUID = 1398968974935L;
     
     private webservices.PutCaseStub.PutCaseParseException faultMessage;
 

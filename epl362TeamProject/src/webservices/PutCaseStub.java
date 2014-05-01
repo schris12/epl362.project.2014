@@ -1970,7 +1970,7 @@
                         */
 
                         
-                                    protected java.lang.String localType ;
+                                    protected int localType ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -1986,9 +1986,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return int
                            */
-                           public  java.lang.String getType(){
+                           public  int getType(){
                                return localType;
                            }
 
@@ -1998,8 +1998,11 @@
                                * Auto generated setter method
                                * @param param Type
                                */
-                               public void setType(java.lang.String param){
-                            localTypeTracker = true;
+                               public void setType(int param){
+                            
+                                       // setting primitive attribute tracker to true
+                                       localTypeTracker =
+                                       param != java.lang.Integer.MIN_VALUE;
                                    
                                             this.localType=param;
                                     
@@ -2186,18 +2189,13 @@
                                     namespace = "http://webservices";
                                     writeStartElement(null, namespace, "type", xmlWriter);
                              
-
-                                          if (localType==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localType);
-                                            
-                                          }
+                                               if (localType==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("type cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType));
+                                               }
                                     
                                    xmlWriter.writeEndElement();
                              } if (localRiskTracker){
@@ -2426,9 +2424,9 @@
                                       elementList.add(new javax.xml.namespace.QName("http://webservices",
                                                                       "type"));
                                  
-                                         elementList.add(localType==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType));
-                                    } if (localRiskTracker){
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType));
+                            } if (localRiskTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://webservices",
                                                                       "risk"));
                                  
@@ -2627,27 +2625,25 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://webservices","type").equals(reader.getName())){
                                 
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"type" +"  cannot be null");
+                                    }
                                     
 
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setType(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                              
                                         reader.next();
                                     
                               }  // End of if for expected property start element
                                 
                                     else {
                                         
+                                               object.setType(java.lang.Integer.MIN_VALUE);
+                                           
                                     }
                                 
                                     
