@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -57,7 +58,7 @@ public class MainScreen {
 		txtUsername = new JTextField();
 		txtUsername.setBounds(240, 80, 120, 20);
 		contentPane.add(txtUsername);
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(240, 110, 120, 20);
 		contentPane.add(txtPassword);
 
@@ -66,6 +67,12 @@ public class MainScreen {
 		contentPane.add(btnLogIn);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(txtUsername.getText().equals("")||txtPassword.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "Please Insert Something!","Error", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				
 				boolean flag = false;
 				webservices.SelectUserStub.Select_user request;
 				request = new Select_user();
@@ -79,7 +86,7 @@ public class MainScreen {
 						String resultCmp [] = result[i].split(",");
 						if (resultCmp[0].equals(txtUsername.getText()))
 							if (resultCmp[1].equals(txtPassword.getText()))
-								if (Integer.parseInt(resultCmp[2]) == roleSelect.getSelectedIndex())
+								if (Integer.parseInt(resultCmp[2]) == (roleSelect.getSelectedIndex()+1))
 									flag = true;	
 					}
 					
@@ -92,16 +99,19 @@ public class MainScreen {
 					mainLoginScreen.dispose();
 					int i = roleSelect.getSelectedIndex();
 					switch (i) {
-						case 1: {
+						case 0: {
 							new headOfficeOptions();break;
 						}
-						case 2: {
+						case 1: {
 							new legalStaffOptions();break;
 						}
-						case 3: {
+						case 2: {
 							new receptionistOptions();break;
 						}
 					}
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Wrong Credentials!","Error", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
