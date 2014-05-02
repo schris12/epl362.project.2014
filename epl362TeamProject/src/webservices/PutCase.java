@@ -14,14 +14,17 @@ public class PutCase {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(dbUrl, "root", "");
 
-			String insertTableSQL = "INSERT INTO case"
-					+ "(client_id, legal_id, date_open, date_close, type, risk) VALUES"
+			String insertTableSQL = "INSERT INTO `case` "
+					+ "(`client_id`, `legal_id`, `date_open`, `date_close`, `type`, `risk`) VALUES "
 					+ "(?,?,?,?,?,?)";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
 			preparedStatement.setString(1, client_id);
 			preparedStatement.setString(2, lawyer_id);
+			
 			java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_open);
+			System.out.println(utilDate);
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			System.out.println(sqlDate);
 			preparedStatement.setDate(3, sqlDate);
 			java.util.Date utilDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(date_close);
 			java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
