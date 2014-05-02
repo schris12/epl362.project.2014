@@ -22,9 +22,7 @@ public class PutCase {
 			preparedStatement.setString(2, lawyer_id);
 			
 			java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_open);
-			System.out.println(utilDate);
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			System.out.println(sqlDate);
 			preparedStatement.setDate(3, sqlDate);
 			java.util.Date utilDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(date_close);
 			java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
