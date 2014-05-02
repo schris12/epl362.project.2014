@@ -18,6 +18,7 @@ import receptionistViewpoint.addAppointment;
 import receptionistViewpoint.appointments;
 import webservices.PutLawyerStub.Put_lawyer;
 import webservices.SelectCaseStub.Select_case;
+import webservices.SelectRecomStub.Select_recom;
 import webservices.SelectTypeStub.Select_type;
 import legalStaffViewpoint.legalStaffOptions;
 import main.constants;
@@ -71,7 +72,32 @@ public class headOfficeReports {
 				}		
 			}
 		});
-
+		
+		JButton btnCaseRecom = new JButton("Recommendations By Case");
+		btnCaseRecom.setBounds(155, 90, 200, 30);
+		contentPane.add(btnCaseRecom);
+		btnCaseRecom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				webservices.SelectRecomStub.Select_recom request;
+				request = new Select_recom();
+				request.setCase_id(Integer.parseInt(JOptionPane.showInputDialog(null, "Please Give Case No: ","")));
+			     //Invoking the service
+			     try {
+			    	webservices.SelectRecomStub stub = new webservices.SelectRecomStub();
+			    	webservices.SelectRecomStub.Select_recomResponse response = stub.select_recom(request);
+					String[] result = response.get_return();	
+					String s="";
+					for(String ss : result){
+						s+=ss+"\n";
+					}
+					JOptionPane.showMessageDialog(null, s, "Recommendations By Case",JOptionPane.PLAIN_MESSAGE);
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}		
+			}
+		});
+		
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 210, 200, 30);
 		contentPane.add(btnRecord);
