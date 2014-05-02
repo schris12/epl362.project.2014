@@ -55,8 +55,9 @@ public class headOfficeOptions {
 		btnReports.setBounds(155, 90, 200, 30);
 		contentPane.add(btnReports);
 		btnReports.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
+			public void actionPerformed(ActionEvent e) {				
+				options.dispose();
+				new headOfficeReports();
 			}
 		});
 
