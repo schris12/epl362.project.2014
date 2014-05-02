@@ -25,7 +25,7 @@ public class SelectCase {
 
 			statement = connect.createStatement();
 			resultSet = statement
-					.executeQuery("select * from case");
+					.executeQuery("select * from `case`");
 			resultString.add("");
 			while (resultSet.next()) {
 				int case_id = resultSet.getInt("case_id");
@@ -36,7 +36,7 @@ public class SelectCase {
 				int risk = resultSet.getInt("risk");
 				int type = resultSet.getInt("type");
 				resultString.add(case_id+", "+client_id+", "+lawyer_id+
-						", "+date_open+", "+date_close+", "+risk+", "+", "+type);
+						", "+date_open+", "+date_close+", "+risk+", "+type);
 			}
 
 			connect.close();

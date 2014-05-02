@@ -21,8 +21,8 @@ public class EditCase {
 			preparedStatement.setString(2, lawyer_id);
 			preparedStatement.setString(3, date_open);
 			preparedStatement.setString(4, date_close);
-			preparedStatement.setString(5, type);
-			preparedStatement.setInt(6, risk);
+			preparedStatement.setInt(5, risk);
+			preparedStatement.setString(6, type);
 			preparedStatement.setString(7, case_id);
 			int ret = preparedStatement.executeUpdate();
 			
