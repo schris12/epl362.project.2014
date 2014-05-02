@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.DeleteAppointmentStub.Delete_appointment;
 import webservices.EditAppointmentParseExceptionException;
 import webservices.EditAppointmentStub.Edit_appointment;
@@ -149,6 +150,7 @@ public class editAppointment extends JFrame {
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("DeleteAppointment");
 				int appointment = Integer.parseInt(txtAppoint.getText()); 
 				
 				//Creating the Request
@@ -175,6 +177,7 @@ public class editAppointment extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("EditAppointment");
 				String client_id = cmbClient.getText().toString().split(", ")[0];
 				String lawyer_id = cmbLawyer.getText().toString().split(", ")[0];
 				String branch_id = cmbBranch.getText();

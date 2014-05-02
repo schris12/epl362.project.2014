@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.PutAppointmentParseExceptionException;
 import webservices.PutAppointmentStub.Put_appointment;
 import webservices.SelectClientStub.Select_client;
@@ -121,6 +122,7 @@ public class addAppointment extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("AddAppointment");
 				String client_id = cmbClient.getSelectedItem().toString().split(", ")[0];
 				String lawyer_id = cmbLawyer.getSelectedItem().toString().split(", ")[0];
 				String branch_id = cmbBranch.getText();

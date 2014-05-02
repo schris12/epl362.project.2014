@@ -1,9 +1,17 @@
 package main;
 
+import headOfficeViewpoint.headOfficeOptions;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.rmi.RemoteException;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,13 +23,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import com.json.parsers.JSONParser;
-import com.json.parsers.JsonParserFactory;
-
-import headOfficeViewpoint.headOfficeOptions;
 import legalStaffViewpoint.legalStaffOptions;
 import receptionistViewpoint.receptionistOptions;
-import webservices.SelectLawyerStub.Select_lawyer;
 import webservices.SelectUserStub.Select_user;
 
 public class MainScreen {
@@ -32,6 +35,16 @@ public class MainScreen {
 
 	public static void main(String[] args) {
 		new MainScreen();
+		String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+		File file = new File("logs/"+timeStamp);
+		if(!file.exists()) {
+		    try {
+		    	file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} 
 	}
 
 	public MainScreen() {
@@ -100,12 +113,78 @@ public class MainScreen {
 					int i = roleSelect.getSelectedIndex();
 					switch (i) {
 						case 0: {
+							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+							File file = new File("logs/"+timeStamp);					
+							FileWriter fw = null;
+							try {
+								fw = new FileWriter(file.getAbsoluteFile());
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							BufferedWriter bw = new BufferedWriter(fw);
+							try {
+								bw.write("Manager: "+txtUsername.getText()+" Logged In\n");
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							try {
+								bw.close();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							new headOfficeOptions();break;
 						}
 						case 1: {
+							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+							File file = new File("logs/"+timeStamp);					
+							FileWriter fw = null;
+							try {
+								fw = new FileWriter(file.getAbsoluteFile());
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							BufferedWriter bw = new BufferedWriter(fw);
+							try {
+								bw.write("Lawyer: "+txtUsername.getText()+" Logged In\n");
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							try {
+								bw.close();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							new legalStaffOptions();break;
 						}
 						case 2: {
+							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+							File file = new File("logs/"+timeStamp);					
+							FileWriter fw = null;
+							try {
+								fw = new FileWriter(file.getAbsoluteFile());
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							BufferedWriter bw = new BufferedWriter(fw);
+							try {
+								bw.write("Receptionist: "+txtUsername.getText()+" Logged In\n");
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							try {
+								bw.close();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							new receptionistOptions();break;
 						}
 					}

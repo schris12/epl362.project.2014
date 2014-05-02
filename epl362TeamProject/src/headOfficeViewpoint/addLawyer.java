@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import webservices.PutClientStub.Put_client;
 import webservices.PutLawyerStub.Put_lawyer;
 import legalStaffViewpoint.lawyerOptions;
+import main.logWriter;
 
 
 public class addLawyer extends JFrame {
@@ -73,6 +74,7 @@ public class addLawyer extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("AddLawyer");
 				String id = txtLawyerID.getText();
 				String name = txtLawyerName.getText();
 				String surname = txtLawyerSurname.getText();	

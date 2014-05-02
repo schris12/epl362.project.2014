@@ -55,7 +55,7 @@ public class headOfficeReports {
 			public void actionPerformed(ActionEvent e) {				
 				webservices.SelectTypeStub.Select_type request;
 				request = new Select_type();
-				request.setType(Integer.parseInt(JOptionPane.showInputDialog(null, "Please Give Case Type: ","")));
+				request.setType(Integer.parseInt(JOptionPane.showInputDialog(null, "Money Laundring=1\nOther=2\n\nPlease Give Case Type: ","")));
 			     //Invoking the service
 			     try {
 			    	webservices.SelectTypeStub stub = new webservices.SelectTypeStub();

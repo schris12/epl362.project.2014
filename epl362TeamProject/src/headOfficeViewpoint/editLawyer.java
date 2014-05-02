@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.DeleteLawyerStub.Delete_lawyer;
 import webservices.EditLawyerStub.Edit_lawyer;
 import webservices.SelectLawyerStub.Select_lawyer;
@@ -105,6 +106,7 @@ public class editLawyer extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("EditLawyer");
 				String id = txtLawyerID.getText();
 				String name = txtLawyerName.getText();
 				String surname = txtLawyerSurname.getText();

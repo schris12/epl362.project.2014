@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.PutClientStub.Put_client;
 
 public class addClient extends JFrame {
@@ -70,6 +71,7 @@ public class addClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("AddClient");
 				String id = txtClientID.getText();
 				String name = txtClientName.getText();
 				String surname = txtClientSurname.getText();

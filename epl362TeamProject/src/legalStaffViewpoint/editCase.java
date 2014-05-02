@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.DeleteCaseStub.Delete_case;
 import webservices.EditCaseStub.Edit_case;
 import webservices.SelectCaseStub.Select_case;
@@ -152,6 +153,7 @@ public class editCase extends JFrame {
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("DeleteCase");
 				int case_id =Integer.parseInt(txtID.getText().toString());
 				
 				//Creating the Request
@@ -195,6 +197,7 @@ public class editCase extends JFrame {
 //				}
 				
 				/*Here*/
+				new logWriter().logWriterOut("EditCase");
 				String case_id = txtID.getText().toString();
 				String client_id = cmbClient.getText().toString();
 				String lawyer_id = cmbLawyer.getText().toString();

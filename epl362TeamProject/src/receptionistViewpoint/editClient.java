@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.DeleteClientStub.Delete_client;
 import webservices.EditClientStub.Edit_client;
 import webservices.SelectClientStub.Select_client;
@@ -105,6 +106,7 @@ public class editClient extends JFrame {
 		contentPane.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("EditCase");
 				String id = txtClientID.getText();
 				String name = txtClientName.getText();
 				String surname = txtClientSurname.getText();
@@ -150,6 +152,7 @@ public class editClient extends JFrame {
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new logWriter().logWriterOut("DeleteCase");
 				String id = txtClientID.getText();
 
 				// Creating the Request

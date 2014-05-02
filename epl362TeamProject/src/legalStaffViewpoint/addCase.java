@@ -23,6 +23,7 @@ import webservices.SelectLawyerStub.Select_lawyer;
 import main.constants;
 import main.fillCombo;
 import main.httpRequest;
+import main.logWriter;
 
 public class addCase extends JFrame {
 
@@ -181,6 +182,7 @@ public class addCase extends JFrame {
 				// }
 
 				/* Here */
+				new logWriter().logWriterOut("AddCase");
 				String client_id = cmbClient.getSelectedItem().toString().split(", ")[0];
 				String lawyer_id = cmbLawyer.getSelectedItem().toString().split(", ")[0];
 				int type = Integer.parseInt(cmbType.getText());
