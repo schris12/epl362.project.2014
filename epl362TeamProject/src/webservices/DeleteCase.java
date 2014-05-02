@@ -12,7 +12,7 @@ public class DeleteCase {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(dbUrl, "root","");
 
-			String deleteSQL = "DELETE FROM case WHERE case_id=?";
+			String deleteSQL = "DELETE FROM `case` WHERE case_id=?";
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, id);
 			int ret = preparedStatement.executeUpdate();

@@ -2,6 +2,8 @@ package legalStaffViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,9 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import main.fillCombo;
-import webservices.PutCaseParseExceptionException;
-import webservices.PutCaseStub.Put_case;
+import webservices.DeleteCaseStub.Delete_case;
+import webservices.EditCaseStub.Edit_case;
 import webservices.SelectCaseStub.Select_case;
 
 public class editCase extends JFrame {
@@ -32,6 +33,8 @@ public class editCase extends JFrame {
 		new editCase();
 	}
 
+	
+	
 	public void fillcase(){
 		webservices.SelectCaseStub.Select_case request;
 		request = new Select_case();
@@ -42,7 +45,7 @@ public class editCase extends JFrame {
 	    	webservices.SelectCaseStub.Select_caseResponse response = stub.select_case(request);
 			String[] result = response.get_return();			
 			cmbCases = new JComboBox<String>(result);
-			cmbCases.setBounds(450, 60, 200, 30);
+			cmbCases.setBounds(450, 60, 275, 30);
 			contentPane.add(cmbCases);
 		} catch (RemoteException ea) {
 			// TODO Auto-generated catch block
@@ -56,7 +59,7 @@ public class editCase extends JFrame {
 		final JFrame addScr = new JFrame();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 643, 337);
+		setBounds(100, 100, 643, 637);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -90,7 +93,20 @@ public class editCase extends JFrame {
 		cmbClient = new JTextField();
 		cmbClient.setBounds(240, 100, 200, 30);
 		contentPane.add(cmbClient);
+		
 		fillcase();
+		cmbCases.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				txtID.setText(cmbCases.getSelectedItem().toString().split(", ")[0]);
+				cmbClient.setText(cmbCases.getSelectedItem().toString().split(", ")[1]);
+				cmbLawyer.setText(cmbCases.getSelectedItem().toString().split(", ")[2]);
+				cmbType.setText(cmbCases.getSelectedItem().toString().split(", ")[6]);
+				dateOpen.setText(cmbCases.getSelectedItem().toString().split(", ")[3]);
+				dateClose.setText(cmbCases.getSelectedItem().toString().split(", ")[4]);
+				cmbRisk.setSelectedItem(cmbCases.getSelectedItem().toString().split(", ")[5]);
+			}
+		});
+		
 		cmbLawyer = new JTextField();
 		cmbLawyer.setBounds(240, 140, 200, 30);
 		contentPane.add(cmbLawyer);
@@ -134,7 +150,27 @@ public class editCase extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(190, 400, 80, 30);
 		contentPane.add(btnDelete);
-		
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int case_id =Integer.parseInt(txtID.getText().toString());
+				
+				//Creating the Request
+				webservices.DeleteCaseStub.Delete_case request;
+				request = new Delete_case();
+				request.setId(case_id);
+
+			     //Invoking the service
+			     try {
+			    	webservices.DeleteCaseStub stub = new webservices.DeleteCaseStub();
+			    	webservices.DeleteCaseStub.Delete_caseResponse response = stub.delete_case(request);
+					System.out.println("Response: " + response.get_return());					
+				
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}	
+			}
+		});
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(280, 400, 80, 30);
 		contentPane.add(btnSave);
@@ -159,6 +195,7 @@ public class editCase extends JFrame {
 //				}
 				
 				/*Here*/
+				String case_id = txtID.getText().toString();
 				String client_id = cmbClient.getText().toString();
 				String lawyer_id = cmbLawyer.getText().toString();
 				String type = cmbType.getText().toString();
@@ -167,28 +204,27 @@ public class editCase extends JFrame {
 				int risk =Integer.parseInt(cmbRisk.getSelectedItem().toString());
 				
 				//Creating the Request
-				webservices.PutCaseStub.Put_case request;
-				request = new Put_case();
+				webservices.EditCaseStub.Edit_case request;
+				request = new Edit_case();
+				request.setCase_id(case_id);
 				request.setClient_id(client_id);
 				request.setLawyer_id(lawyer_id);				
 				request.setDate_open(date_open);
 				request.setDate_close(date_close);
+				request.setType(type);
 				request.setRisk(risk);
 				
 
 			     
 			     //Invoking the service
 			     try {
-			    	webservices.PutCaseStub stub = new webservices.PutCaseStub();
-					webservices.PutCaseStub.Put_caseResponse response = stub.put_case(request);
+			    	webservices.EditCaseStub stub = new webservices.EditCaseStub();
+			    	webservices.EditCaseStub.Edit_caseResponse response = stub.edit_case(request);
 					System.out.println("Response: " + response.get_return());					
 				
 				} catch (RemoteException ea) {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
-				} catch (PutCaseParseExceptionException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}	
 			}
 
@@ -215,7 +251,7 @@ public class editCase extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		addScr.add(contentPane);
-		addScr.setSize(700, 500);
+		addScr.setSize(775, 500);
 		addScr.setVisible(true);
 	}
 	
