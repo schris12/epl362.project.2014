@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 
 import legalStaffViewpoint.legalStaffOptions;
 import receptionistViewpoint.receptionistOptions;
+import webservices.AddLogStub.Add_log;
 import webservices.SelectUserStub.Select_user;
 
 public class MainScreen {
@@ -113,78 +114,15 @@ public class MainScreen {
 					int i = roleSelect.getSelectedIndex();
 					switch (i) {
 						case 0: {
-							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-							File file = new File("logs/"+timeStamp);					
-							FileWriter fw = null;
-							try {
-								fw = new FileWriter(file.getAbsoluteFile());
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							BufferedWriter bw = new BufferedWriter(fw);
-							try {
-								bw.write("Manager: "+txtUsername.getText()+" Logged In\n");
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							try {
-								bw.close();
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							new logWriter().logWriterOut("Manager: "+txtUsername.getText()+" Logged In");
 							new headOfficeOptions();break;
 						}
 						case 1: {
-							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-							File file = new File("logs/"+timeStamp);					
-							FileWriter fw = null;
-							try {
-								fw = new FileWriter(file.getAbsoluteFile());
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							BufferedWriter bw = new BufferedWriter(fw);
-							try {
-								bw.write("Lawyer: "+txtUsername.getText()+" Logged In\n");
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							try {
-								bw.close();
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							new logWriter().logWriterOut("Lawyer: "+txtUsername.getText()+" Logged In");
 							new legalStaffOptions();break;
 						}
 						case 2: {
-							String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-							File file = new File("logs/"+timeStamp);					
-							FileWriter fw = null;
-							try {
-								fw = new FileWriter(file.getAbsoluteFile());
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							BufferedWriter bw = new BufferedWriter(fw);
-							try {
-								bw.write("Receptionist: "+txtUsername.getText()+" Logged In\n");
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							try {
-								bw.close();
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							new logWriter().logWriterOut("Receptionist: "+txtUsername.getText()+" Logged In");
 							new receptionistOptions();break;
 						}
 					}
