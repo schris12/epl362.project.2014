@@ -49,7 +49,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://webservices", "select_client"));
+            __operation.setName(new javax.xml.namespace.QName("http://webservices", "select_user"));
 	    _service.addOperation(__operation);
 	    
 
@@ -129,16 +129,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see webservices.SelectUser#select_client
-                     * @param select_client0
+                     * @see webservices.SelectUser#select_user
+                     * @param select_user0
                     
                      */
 
                     
 
-                            public  webservices.SelectUserStub.Select_clientResponse select_client(
+                            public  webservices.SelectUserStub.Select_userResponse select_user(
 
-                            webservices.SelectUserStub.Select_client select_client0)
+                            webservices.SelectUserStub.Select_user select_user0)
                         
 
                     throws java.rmi.RemoteException
@@ -147,7 +147,7 @@
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
                org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-              _operationClient.getOptions().setAction("urn:select_client");
+              _operationClient.getOptions().setAction("urn:select_user");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -165,10 +165,10 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    select_client0,
+                                                    select_user0,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices",
-                                                    "select_client")), new javax.xml.namespace.QName("http://webservices",
-                                                    "select_client"));
+                                                    "select_user")), new javax.xml.namespace.QName("http://webservices",
+                                                    "select_user"));
                                                 
         //adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -189,25 +189,25 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             webservices.SelectUserStub.Select_clientResponse.class,
+                                             webservices.SelectUserStub.Select_userResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (webservices.SelectUserStub.Select_clientResponse)object;
+                                        return (webservices.SelectUserStub.Select_userResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
             org.apache.axiom.om.OMElement faultElt = f.getDetail();
             if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"))){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"))){
                     //make the fault by reflection
                     try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"));
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"));
                         java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
                         java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(String.class);
                         java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
                         //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"));
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"));
                         java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
                         java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -251,20 +251,20 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see webservices.SelectUser#startselect_client
-                    * @param select_client0
+                * @see webservices.SelectUser#startselect_user
+                    * @param select_user0
                 
                 */
-                public  void startselect_client(
+                public  void startselect_user(
 
-                 webservices.SelectUserStub.Select_client select_client0,
+                 webservices.SelectUserStub.Select_user select_user0,
 
                   final webservices.SelectUserCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-             _operationClient.getOptions().setAction("urn:select_client");
+             _operationClient.getOptions().setAction("urn:select_user");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -282,10 +282,10 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    select_client0,
+                                                    select_user0,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices",
-                                                    "select_client")), new javax.xml.namespace.QName("http://webservices",
-                                                    "select_client"));
+                                                    "select_user")), new javax.xml.namespace.QName("http://webservices",
+                                                    "select_user"));
                                                 
         // adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -303,13 +303,13 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         webservices.SelectUserStub.Select_clientResponse.class,
+                                                                         webservices.SelectUserStub.Select_userResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
-                                        callback.receiveResultselect_client(
-                                        (webservices.SelectUserStub.Select_clientResponse)object);
+                                        callback.receiveResultselect_user(
+                                        (webservices.SelectUserStub.Select_userResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
-                                callback.receiveErrorselect_client(e);
+                                callback.receiveErrorselect_user(e);
                             }
                             }
 
@@ -318,15 +318,15 @@
 									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
 									org.apache.axiom.om.OMElement faultElt = f.getDetail();
 									if (faultElt!=null){
-										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"))){
+										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"))){
 											//make the fault by reflection
 											try{
-													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"));
+													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"));
 													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(String.class);
                                                     java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 													//message class
-													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_client"));
+													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"select_user"));
 														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
 													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -334,37 +334,37 @@
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
 					
-										            callback.receiveErrorselect_client(new java.rmi.RemoteException(ex.getMessage(), ex));
+										            callback.receiveErrorselect_user(new java.rmi.RemoteException(ex.getMessage(), ex));
                                             } catch(java.lang.ClassCastException e){
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (java.lang.ClassNotFoundException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (java.lang.NoSuchMethodException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (java.lang.reflect.InvocationTargetException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (java.lang.IllegalAccessException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (java.lang.InstantiationException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             } catch (org.apache.axis2.AxisFault e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorselect_client(f);
+                                                callback.receiveErrorselect_user(f);
                                             }
 									    } else {
-										    callback.receiveErrorselect_client(f);
+										    callback.receiveErrorselect_user(f);
 									    }
 									} else {
-									    callback.receiveErrorselect_client(f);
+									    callback.receiveErrorselect_user(f);
 									}
 								} else {
-								    callback.receiveErrorselect_client(error);
+								    callback.receiveErrorselect_user(error);
 								}
                             }
 
@@ -377,7 +377,7 @@
                                 try {
                                     _messageContext.getTransportOut().getSender().cleanup(_messageContext);
                                 } catch (org.apache.axis2.AxisFault axisFault) {
-                                    callback.receiveErrorselect_client(axisFault);
+                                    callback.receiveErrorselect_user(axisFault);
                                 }
                             }
                 });
@@ -427,24 +427,12 @@
         return false;
     }
      //http://localhost:8080/epl362TeamProject/services/SelectUser.SelectUserHttpSoap11Endpoint/
-        public static class ExtensionMapper{
-
-          public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
-                                                       java.lang.String typeName,
-                                                       javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-
-              
-             throw new org.apache.axis2.databinding.ADBException("Unsupported type " + namespaceURI + " " + typeName);
-          }
-
-        }
-    
-        public static class Select_client
+        public static class Select_user
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://webservices",
-                "select_client",
+                "select_user",
                 "ns1");
 
             
@@ -497,11 +485,11 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":select_client",
+                           namespacePrefix+":select_user",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "select_client",
+                           "select_user",
                            xmlWriter);
                    }
 
@@ -717,9 +705,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Select_client parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Select_client object =
-                new Select_client();
+        public static Select_user parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Select_user object =
+                new Select_user();
 
             int event;
             java.lang.String nillableValue = null;
@@ -743,10 +731,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"select_client".equals(type)){
+                            if (!"select_user".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (Select_client)ExtensionMapper.getTypeObject(
+                                return (Select_user)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -792,12 +780,24 @@
         }
            
     
-        public static class Select_clientResponse
+        public static class ExtensionMapper{
+
+          public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
+                                                       java.lang.String typeName,
+                                                       javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+
+              
+             throw new org.apache.axis2.databinding.ADBException("Unsupported type " + namespaceURI + " " + typeName);
+          }
+
+        }
+    
+        public static class Select_userResponse
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://webservices",
-                "select_clientResponse",
+                "select_userResponse",
                 "ns1");
 
             
@@ -930,11 +930,11 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":select_clientResponse",
+                           namespacePrefix+":select_userResponse",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "select_clientResponse",
+                           "select_userResponse",
                            xmlWriter);
                    }
 
@@ -1214,9 +1214,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Select_clientResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Select_clientResponse object =
-                new Select_clientResponse();
+        public static Select_userResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Select_userResponse object =
+                new Select_userResponse();
 
             int event;
             java.lang.String nillableValue = null;
@@ -1240,10 +1240,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"select_clientResponse".equals(type)){
+                            if (!"select_userResponse".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (Select_clientResponse)ExtensionMapper.getTypeObject(
+                                return (Select_userResponse)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -1350,12 +1350,12 @@
         }
            
     
-            private  org.apache.axiom.om.OMElement  toOM(webservices.SelectUserStub.Select_client param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(webservices.SelectUserStub.Select_user param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(webservices.SelectUserStub.Select_client.MY_QNAME,
+                             return param.getOMElement(webservices.SelectUserStub.Select_user.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1364,12 +1364,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(webservices.SelectUserStub.Select_clientResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(webservices.SelectUserStub.Select_userResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(webservices.SelectUserStub.Select_clientResponse.MY_QNAME,
+                             return param.getOMElement(webservices.SelectUserStub.Select_userResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1379,14 +1379,14 @@
             }
         
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, webservices.SelectUserStub.Select_client param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, webservices.SelectUserStub.Select_user param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(webservices.SelectUserStub.Select_client.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(webservices.SelectUserStub.Select_user.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1416,16 +1416,16 @@
 
         try {
         
-                if (webservices.SelectUserStub.Select_client.class.equals(type)){
+                if (webservices.SelectUserStub.Select_user.class.equals(type)){
                 
-                           return webservices.SelectUserStub.Select_client.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return webservices.SelectUserStub.Select_user.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (webservices.SelectUserStub.Select_clientResponse.class.equals(type)){
+                if (webservices.SelectUserStub.Select_userResponse.class.equals(type)){
                 
-                           return webservices.SelectUserStub.Select_clientResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return webservices.SelectUserStub.Select_userResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

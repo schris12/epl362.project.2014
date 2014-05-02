@@ -45,19 +45,19 @@
 
         
            /**
-            * auto generated Axis2 call back method for select_client method
-            * override this method for handling normal response from select_client operation
+            * auto generated Axis2 call back method for select_user method
+            * override this method for handling normal response from select_user operation
             */
-           public void receiveResultselect_client(
-                    webservices.SelectUserStub.Select_clientResponse result
+           public void receiveResultselect_user(
+                    webservices.SelectUserStub.Select_userResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from select_client operation
+           * override this method for handling error response from select_user operation
            */
-            public void receiveErrorselect_client(java.lang.Exception e) {
+            public void receiveErrorselect_user(java.lang.Exception e) {
             }
                 
 

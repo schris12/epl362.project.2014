@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 public class SelectUser {
-	public LinkedList<String> select_client() {
+	public LinkedList<String> select_user() {
 		String dbUrl = "jdbc:mysql://localhost/362";
 		try {
 			LinkedList<String> resultString = new LinkedList<String>();
