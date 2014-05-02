@@ -2,7 +2,6 @@ package junitTestCases;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.el.parser.ParseException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,7 +23,7 @@ public class EditAppointmentTest {
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 	
-	@Test (expected = ParseException.class)
+	@Test 
 	public final void testEdit_appointment() {
 		EditAppointment edit_appointment = new EditAppointment();
 		int retr;
