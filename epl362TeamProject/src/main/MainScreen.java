@@ -2,6 +2,7 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -15,9 +16,12 @@ import javax.swing.border.EmptyBorder;
 
 import com.json.parsers.JSONParser;
 import com.json.parsers.JsonParserFactory;
+
 import headOfficeViewpoint.headOfficeOptions;
 import legalStaffViewpoint.legalStaffOptions;
 import receptionistViewpoint.receptionistOptions;
+import webservices.SelectLawyerStub.Select_lawyer;
+import webservices.SelectUserStub.Select_user;
 
 public class MainScreen {
 
@@ -62,22 +66,42 @@ public class MainScreen {
 		contentPane.add(btnLogIn);
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// if (checkPassword()){
-				// new legalStaffOptions();
-				// mainLoginScreen.dispose();
-				// }
-				mainLoginScreen.dispose();
-				int i = roleSelect.getSelectedIndex();
-				switch (i) {
-				case 0: {
-					new headOfficeOptions();break;
+				boolean flag = false;
+				webservices.SelectUserStub.Select_user request;
+				request = new Select_user();
+				// Invoking the service
+				try {
+					webservices.SelectUserStub stub = new webservices.SelectUserStub();
+					webservices.SelectUserStub.Select_userResponse response = stub
+							.select_user(request);
+					String[] result = response.get_return();
+					for (int i = 0; i < result.length && !flag; i++){
+						String resultCmp [] = result[i].split(",");
+						if (resultCmp[0].equals(txtUsername.getText()))
+							if (resultCmp[1].equals(txtPassword.getText()))
+								if (Integer.parseInt(resultCmp[2]) == roleSelect.getSelectedIndex())
+									flag = true;	
+					}
+					
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
 				}
-				case 1: {
-					new legalStaffOptions();break;
-				}
-				case 2: {
-					new receptionistOptions();break;
-				}
+
+				if (flag){
+					mainLoginScreen.dispose();
+					int i = roleSelect.getSelectedIndex();
+					switch (i) {
+						case 1: {
+							new headOfficeOptions();break;
+						}
+						case 2: {
+							new legalStaffOptions();break;
+						}
+						case 3: {
+							new receptionistOptions();break;
+						}
+					}
 				}
 			}
 		});
@@ -104,37 +128,4 @@ public class MainScreen {
 		mainLoginScreen.setVisible(true);
 	}
 
-	public boolean checkPassword() {
-		httpRequest http = new httpRequest();
-		String url = constants.getUrl() + "GetDetails/" + txtUsername.getText();
-		System.out.println(url);
-		String result = "";
-		// String result =
-		// "{\"id\": 10,\"pass\": \"1234\",\"type\": \"legal\"}";
-		try {
-			result = http.sendGet(url);
-			if (result.equals("")) {
-				JOptionPane.showMessageDialog(null, "Wrong Username",
-						"Username Error", JOptionPane.WARNING_MESSAGE);
-				return false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// System.out.print("gitTest");
-		// System.out.print(result);
-		JsonParserFactory fct = JsonParserFactory.getInstance();
-		JSONParser parser = fct.newJsonParser();
-		Map<String, String> jsonData = parser.parseJson(result);
-		String val = jsonData.get("pass");
-		// System.out.println("Type="+jsonData.get("type"));
-		if (val.equals(txtPassword.getText()))
-			return true;
-		else {
-			JOptionPane.showMessageDialog(null, "Wrong Password",
-					"Password Error", JOptionPane.WARNING_MESSAGE);
-			return false;
-		}
-
-	}
 }

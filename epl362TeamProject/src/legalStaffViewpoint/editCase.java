@@ -32,8 +32,6 @@ public class editCase extends JFrame {
 		new editCase();
 	}
 
-	
-	
 	public void fillcase(){
 		webservices.SelectCaseStub.Select_case request;
 		request = new Select_case();
