@@ -15,14 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import webservices.PutAppointmentStub.Put_appointment;
 import webservices.PutCaseParseExceptionException;
 import webservices.PutCaseStub.Put_case;
 import webservices.SelectClientStub.Select_client;
 import webservices.SelectLawyerStub.Select_lawyer;
-import main.constants;
-import main.fillCombo;
-import main.httpRequest;
 import main.logWriter;
 
 public class addCase extends JFrame {
@@ -32,6 +28,7 @@ public class addCase extends JFrame {
 	private JComboBox<String> cmbClient, cmbLawyer, cmbRisk;
 	private JFormattedTextField dateOpen, dateClose;
 	private JTextField txtID, cmbType;
+	private JTextField txtCase,txtRec,txtOpin,txtCom;
 
 	public static void main(String[] args) {
 		new addCase();
@@ -94,15 +91,31 @@ public class addCase extends JFrame {
 		JLabel lblClient = new JLabel("Select Client:");
 		lblClient.setBounds(100, 100, 100, 30);
 		contentPane.add(lblClient);
+		JLabel lblCase = new JLabel("Case Details:");
+		lblCase.setBounds(480, 100, 100, 30);
+		contentPane.add(lblCase);
+		
 		JLabel lblLawyer = new JLabel("Select Lawyer:");
 		lblLawyer.setBounds(100, 140, 100, 30);
 		contentPane.add(lblLawyer);
+		JLabel lblRec = new JLabel("Reccomendations:");
+		lblRec.setBounds(480, 140, 130, 30);
+		contentPane.add(lblRec);
+		
 		JLabel lblType = new JLabel("Case Type:");
 		lblType.setBounds(100, 180, 100, 30);
 		contentPane.add(lblType);
+		JLabel lblOpin = new JLabel("Legal Opinion:");
+		lblOpin.setBounds(480, 180, 100, 30);
+		contentPane.add(lblOpin);
+		
 		JLabel lblDateOpen = new JLabel("Date Open:");
 		lblDateOpen.setBounds(100, 220, 100, 30);
 		contentPane.add(lblDateOpen);
+		JLabel lblCom = new JLabel("Comments:");
+		lblCom.setBounds(480, 220, 100, 30);
+		contentPane.add(lblCom);
+		
 		JLabel lblDateClose = new JLabel("Date Close:");
 		lblDateClose.setBounds(100, 260, 100, 30);
 		contentPane.add(lblDateClose);
@@ -138,6 +151,20 @@ public class addCase extends JFrame {
 		cmbRisk.setBounds(240, 300, 200, 30);
 		contentPane.add(cmbRisk);
 
+		txtCase = new JTextField();
+		txtCase.setBounds(635,100,200,30);
+		contentPane.add(txtCase);
+		txtRec = new JTextField();
+		txtRec.setBounds(635, 140, 200, 30);
+		contentPane.add(txtRec);
+		txtOpin = new JTextField();
+		txtOpin.setBounds(635, 180, 200, 30);
+		contentPane.add(txtOpin);
+		txtCom = new JTextField();
+		txtCom.setBounds(635, 220, 200, 30);
+		contentPane.add(txtCom);
+		
+		
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 350, 80, 30);
 		contentPane.add(btnClear);
@@ -238,7 +265,7 @@ public class addCase extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		addScr.add(contentPane);
-		addScr.setSize(700, 500);
+		addScr.setSize(1000, 500);
 		addScr.setVisible(true);
 	}
 
