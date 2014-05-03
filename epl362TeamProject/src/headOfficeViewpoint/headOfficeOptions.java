@@ -2,25 +2,19 @@ package headOfficeViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import receptionistViewpoint.addAppointment;
-import receptionistViewpoint.appointments;
-import legalStaffViewpoint.legalStaffOptions;
-import main.constants;
-import main.httpRequest;
 import main.MainScreen;
-
-import com.json.parsers.JSONParser;
-import com.json.parsers.JsonParserFactory;
+import webservices.WeeklyReportStub.Weekly_report;
 
 public class headOfficeOptions {
 
@@ -55,11 +49,39 @@ public class headOfficeOptions {
 		btnReports.setBounds(155, 90, 200, 30);
 		contentPane.add(btnReports);
 		btnReports.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
-				options.dispose();
-				new headOfficeReports();
+			public void actionPerformed(ActionEvent e) {
+				webservices.WeeklyReportStub.Weekly_report request;
+				request = new Weekly_report();
+				
+				//Get current date
+				Calendar c = Calendar.getInstance();
+				c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+				java.util.Date currentdate = c.getTime();//get currentdate
+				c.add(Calendar.DAY_OF_YEAR, 7);  // advances day by 2
+				java.util.Date lastdate =c.getTime();//get the last date of week
+				
+				String mon = currentdate.toString();
+				String sun = lastdate.toString();
+				request.setDate_s(mon);
+				request.setDate_e(sun);;
+				//Invoking the service
+				try {
+					webservices.WeeklyReportStub stub = new webservices.WeeklyReportStub();
+					webservices.WeeklyReportStub.Weekly_reportResponse response = stub.weekly_report(request);
+					String[] result = response.get_return();	
+					String s="Client Sum  |          Date          |  Branch  \n";
+					for(String ss : result){
+						s+=ss+"\n";
+					}
+					//s+=result;
+					JOptionPane.showMessageDialog(null, s, "Weekly Report",JOptionPane.PLAIN_MESSAGE);
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}		
 			}
 		});
+
 
 		JButton btnLawyers = new JButton("Lawyers");
 		btnLawyers.setBounds(155, 130, 200, 30);
