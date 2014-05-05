@@ -21,12 +21,12 @@ public class SelectRecomTest {
 	@Test
 	public final void testSelect_recom() {
 		SelectRecom select_recom = new SelectRecom();
-		int testValue = 1;
-		LinkedList<String> retr = select_recom.select_recom(testValue);
+		LinkedList<String> retr = select_recom.select_recom(1);
 		if (retr != null)
 			System.out.println("@Test for select recommendation Pass");
 		else
 			System.out.println("@Test for select recommendation Fail");
+			
 	}
 
 }
