@@ -19,6 +19,8 @@ import receptionistViewpoint.addAppointment;
 import receptionistViewpoint.appointments;
 import webservices.PutLawyerStub.Put_lawyer;
 import webservices.SelectCaseStub.Select_case;
+import webservices.SelectMissedAppointmentStub;
+import webservices.SelectMissedAppointmentStub.Select_missed_appointment;
 import webservices.SelectRecomStub.Select_recom;
 import webservices.SelectTypeStub.Select_type;
 import webservices.SelectWarningLetterStub.Select_warning_letter;
@@ -164,8 +166,34 @@ public class headOfficeReports {
 			}
 		});
 		
+		
+		JButton btnMissed = new JButton("Missed Appointments");
+		btnMissed.setBounds(155, 210, 200, 30);
+		contentPane.add(btnMissed);
+		btnMissed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				SelectMissedAppointmentStub.Select_missed_appointment request;
+				request = new Select_missed_appointment();
+			     //Invoking the service
+			     try {
+			    	webservices.SelectMissedAppointmentStub stub = new webservices.SelectMissedAppointmentStub();
+			    	webservices.SelectMissedAppointmentStub.Select_missed_appointmentResponse response = stub.select_missed_appointment(request);
+					String[] result = response.get_return();	
+					String s="";
+					for(String ss : result){
+						s+=ss+"\n";
+					}
+					JOptionPane.showMessageDialog(null, s, ("Missed Appointments"),JOptionPane.PLAIN_MESSAGE);
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}		
+			}
+		});
+		
+		
 		JButton btnRecord = new JButton("Back");
-		btnRecord.setBounds(155, 210, 200, 30);
+		btnRecord.setBounds(155, 250, 200, 30);
 		contentPane.add(btnRecord);
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -183,7 +211,7 @@ public class headOfficeReports {
 		contentPane.add(lblNewLabel);
 
 		reportFrame.add(contentPane);
-		reportFrame.setSize(500, 300);
+		reportFrame.setSize(500, 400);
 		reportFrame.setVisible(true);
 	}
 
