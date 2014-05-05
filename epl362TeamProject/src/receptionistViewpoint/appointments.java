@@ -2,13 +2,17 @@ package receptionistViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import webservices.SelectMissedAppointmentStub;
+import webservices.SelectMissedAppointmentStub.Select_missed_appointment;
 import legalStaffViewpoint.legalStaffOptions;
 
 
@@ -60,7 +64,22 @@ public class appointments extends JFrame {
 		 */
 		btnEditClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				SelectMissedAppointmentStub.Select_missed_appointment request;
+				request = new Select_missed_appointment();
+			     //Invoking the service
+			     try {
+			    	webservices.SelectMissedAppointmentStub stub = new webservices.SelectMissedAppointmentStub();
+			    	webservices.SelectMissedAppointmentStub.Select_missed_appointmentResponse response = stub.select_missed_appointment(request);
+					String[] result = response.get_return();	
+					String s="";
+					for(String ss : result){
+						s+=ss+"\n";
+					}
+					JOptionPane.showMessageDialog(null, s, ("Missed Appointments"),JOptionPane.PLAIN_MESSAGE);
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
 			}
 		});
 		
