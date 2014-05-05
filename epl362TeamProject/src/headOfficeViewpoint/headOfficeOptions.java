@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import legalStaffViewpoint.editCase;
 import main.MainScreen;
 import webservices.WeeklyReportStub.Weekly_report;
 
@@ -41,6 +42,7 @@ public class headOfficeOptions {
 		contentPane.add(btnCases);
 		btnCases.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new viewCases();
 				options.dispose();
 			}
 		});
