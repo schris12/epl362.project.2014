@@ -21,6 +21,7 @@ import webservices.PutLawyerStub.Put_lawyer;
 import webservices.SelectCaseStub.Select_case;
 import webservices.SelectRecomStub.Select_recom;
 import webservices.SelectTypeStub.Select_type;
+import webservices.SelectWarningLetterStub.Select_warning_letter;
 import webservices.WeeklyReportStub.Weekly_report;
 import legalStaffViewpoint.legalStaffOptions;
 import main.constants;
@@ -136,6 +137,33 @@ public class headOfficeReports {
 				}		
 			}
 		});
+		
+		JButton btnWarningLetter = new JButton("Warning Letter");
+		btnWarningLetter.setBounds(155, 170, 200, 30);
+		contentPane.add(btnWarningLetter);
+		btnWarningLetter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				int client_id=Integer.parseInt(JOptionPane.showInputDialog(null, "Please Give Client Involved In Illegal Activities: ",""));
+				webservices.SelectWarningLetterStub.Select_warning_letter request;
+				request = new Select_warning_letter();
+				request.setClient_idd(client_id);
+			     //Invoking the service
+			     try {
+			    	webservices.SelectWarningLetterStub stub = new webservices.SelectWarningLetterStub();
+			    	webservices.SelectWarningLetterStub.Select_warning_letterResponse response = stub.select_warning_letter(request);
+					String[] result = response.get_return();	
+					String s="";
+					for(String ss : result){
+						s+=ss+"\n";
+					}
+					JOptionPane.showMessageDialog(null, s, ("Lawyers and clients involved with client "+client_id),JOptionPane.PLAIN_MESSAGE);
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}		
+			}
+		});
+		
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 210, 200, 30);
 		contentPane.add(btnRecord);
