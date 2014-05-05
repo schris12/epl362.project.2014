@@ -20,10 +20,17 @@ public class addClient extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtClientID, txtClientName, txtClientSurname;
 
+	/**
+	 * Launch the application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new addClient();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public addClient() {
 
 		final JFrame addScr = new JFrame();
@@ -58,6 +65,9 @@ public class addClient extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear the form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtClientID.setText("");
@@ -69,6 +79,9 @@ public class addClient extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(220, 320, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save input information
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("AddClient");
@@ -104,6 +117,9 @@ public class addClient extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(310, 320, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();

@@ -17,10 +17,17 @@ public class appointments extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch the application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new appointments();
 	}
 
+	/**
+	 * Create the form 
+	 */
 	public appointments() {
 		
 		final JFrame options = new JFrame();
@@ -35,6 +42,9 @@ public class appointments extends JFrame {
 		JButton btnAddClient = new JButton("New Appointment");
 		btnAddClient.setBounds(170, 50, 170, 30);
 		contentPane.add(btnAddClient);
+		/**
+		 * Button to load form to add a new appointment
+		 */
 		btnAddClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -45,6 +55,9 @@ public class appointments extends JFrame {
 		JButton btnEditClient = new JButton("Missed Appointments");
 		btnEditClient.setBounds(170, 90, 170, 30);
 		contentPane.add(btnEditClient);
+		/**
+		 * Button to load form with missed appointments
+		 */
 		btnEditClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -54,6 +67,9 @@ public class appointments extends JFrame {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(170, 130, 170, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

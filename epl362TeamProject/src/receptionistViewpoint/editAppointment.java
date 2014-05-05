@@ -37,10 +37,17 @@ public class editAppointment extends JFrame {
 	private JLabel txtAppoint;
 	private JCheckBox missed;
 
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new editAppointment();
 	}
 
+	/**
+	 * Load the lawyers of the system
+	 */
 	public void fillLawyer() {
 		webservices.SelectAppointmentStub.Select_appointment request;
 		request = new Select_appointment();
@@ -61,6 +68,9 @@ public class editAppointment extends JFrame {
 
 	}
 
+	/**
+	 * Form constructor
+	 */
 	public editAppointment() {
 		
 		final JFrame addScr = new JFrame();
@@ -116,6 +126,9 @@ public class editAppointment extends JFrame {
 		contentPane.add(missed);
 		
 		fillLawyer();
+		/**
+		 * Dropdown list with the appointments
+		 */
 		cmbAppoint.addItemListener(new ItemListener() {
 	        public void itemStateChanged(ItemEvent arg0) {
 	            String values = cmbAppoint.getSelectedItem().toString();
@@ -134,6 +147,9 @@ public class editAppointment extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 cmbClient.setText("");
@@ -148,6 +164,9 @@ public class editAppointment extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(220, 320, 80, 30);
 		contentPane.add(btnDelete);
+		/**
+		 * Button to delete selection
+		 */
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("DeleteAppointment");
@@ -175,6 +194,9 @@ public class editAppointment extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(310, 320, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save changes 
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("EditAppointment");
@@ -215,6 +237,9 @@ public class editAppointment extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(400, 320, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();

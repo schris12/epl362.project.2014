@@ -18,6 +18,9 @@ public class clientOptions extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch the application
+	 */
 	public static void main(String[] args) {
 		new clientOptions();
 	}
@@ -36,6 +39,9 @@ public class clientOptions extends JFrame {
 		JButton btnAddClient = new JButton("Add Client");
 		btnAddClient.setBounds(160, 50, 170, 30);
 		contentPane.add(btnAddClient);
+		/**
+		 * Button to load form to add client
+		 */
 		btnAddClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -46,6 +52,9 @@ public class clientOptions extends JFrame {
 		JButton btnEditClient = new JButton("Edit/Remove Client");
 		btnEditClient.setBounds(160, 90, 170, 30);
 		contentPane.add(btnEditClient);
+		/**
+		 * Button to load form to edit/remove existing client
+		 */
 		btnEditClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -56,6 +65,9 @@ public class clientOptions extends JFrame {
 		JButton btnRecord = new JButton("View Client Record");
 		btnRecord.setBounds(160, 130, 170, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to load form to view client records
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -66,6 +78,9 @@ public class clientOptions extends JFrame {
 		JButton btnLogOut = new JButton("Back");
 		btnLogOut.setBounds(160, 170, 170, 30);
 		contentPane.add(btnLogOut);
+		/**
+		 * Buttno to go back
+		 */
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

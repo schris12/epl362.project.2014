@@ -29,10 +29,17 @@ public class addAppointment extends JFrame {
 	private JComboBox<String> cmbLawyer;
 	private JTextField cmbBranch;
 	
+	/**
+	 * Launch the application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new addAppointment();
 	}
 	
+	/**
+	 * Load the clients of the system
+	 */
 	public void fillClient(){
 		webservices.SelectClientStub.Select_client request;
 		request = new Select_client();
@@ -52,6 +59,9 @@ public class addAppointment extends JFrame {
 		
 	}
 	
+	/**
+	 * Load the lawyers of the system
+	 */
 	public void fillLawyer(){
 		webservices.SelectLawyerStub.Select_lawyer request;
 		request = new Select_lawyer();
@@ -73,6 +83,9 @@ public class addAppointment extends JFrame {
 	
 	
 
+	/**
+	 * Constructor of the form
+	 */
 	public addAppointment() {
 		
 		final JFrame addScr = new JFrame();
@@ -111,15 +124,24 @@ public class addAppointment extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				cmbClient.setSelectedIndex(0);
+				cmbLawyer.setSelectedIndex(0);
+				cmbBranch.setText("");
+				dateTextField.setText("");
 			}
 		});
 		
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(220, 320, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save details of a new appointment
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("AddAppointment");
@@ -156,6 +178,9 @@ public class addAppointment extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(310, 320, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();
