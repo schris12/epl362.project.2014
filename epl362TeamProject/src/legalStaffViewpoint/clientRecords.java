@@ -19,10 +19,17 @@ public class clientRecords extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new clientRecords();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public clientRecords() {
 		
 		final JFrame recordScr = new JFrame();
@@ -67,6 +74,9 @@ public class clientRecords extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(270, 320, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save a record
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				recordScr.dispose();
@@ -77,6 +87,9 @@ public class clientRecords extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(370, 320, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				recordScr.dispose();

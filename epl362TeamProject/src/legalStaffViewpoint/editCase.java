@@ -30,12 +30,18 @@ public class editCase extends JFrame {
 	private JFormattedTextField dateOpen, dateClose;
 	private JTextField txtID,cmbType, cmbClient,cmbLawyer;
 
+	/**
+	 * Launch the application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new editCase();
 	}
 
 	
-	
+	/**
+	 * Load cases from database
+	 */
 	public void fillcase(){
 		webservices.SelectCaseStub.Select_case request;
 		request = new Select_case();
@@ -55,6 +61,9 @@ public class editCase extends JFrame {
 		
 	}
 	
+	/**
+	 * Constructor of the form
+	 */
 	public editCase() {
 		
 		final JFrame addScr = new JFrame();
@@ -96,6 +105,9 @@ public class editCase extends JFrame {
 		contentPane.add(cmbClient);
 		
 		fillcase();
+		/**
+		 * Dropdown list with the cases
+		 */
 		cmbCases.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				txtID.setText(cmbCases.getSelectedItem().toString().split(", ")[0]);
@@ -136,6 +148,9 @@ public class editCase extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(100, 400, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtID.setText("");
@@ -151,6 +166,9 @@ public class editCase extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(190, 400, 80, 30);
 		contentPane.add(btnDelete);
+		/**
+		 * Button to delete a case
+		 */
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("DeleteCase");
@@ -176,6 +194,9 @@ public class editCase extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(280, 400, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save changes
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				StringBuilder param = new StringBuilder();
@@ -237,6 +258,9 @@ public class editCase extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(370, 400, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();

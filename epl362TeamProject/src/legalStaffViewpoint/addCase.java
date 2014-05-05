@@ -31,10 +31,17 @@ public class addCase extends JFrame {
 	private JTextField txtID, cmbType;
 	private JTextField txtCase;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new addCase();
 	}
 
+	/**
+	 * Load clients
+	 */
 	public void fillClient() {
 		webservices.SelectClientStub.Select_client request;
 		request = new Select_client();
@@ -55,6 +62,9 @@ public class addCase extends JFrame {
 
 	}
 
+	/**
+	 * Load lawyers
+	 */
 	public void fillLawyer() {
 		webservices.SelectLawyerStub.Select_lawyer request;
 		request = new Select_lawyer();
@@ -76,6 +86,9 @@ public class addCase extends JFrame {
 	}
 
 	
+	/**
+	 * Constructor of the form
+	 */
 	public addCase() {
 
 		final JFrame addScr = new JFrame();
@@ -152,6 +165,9 @@ public class addCase extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 350, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtID.setText("");
@@ -167,6 +183,9 @@ public class addCase extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(220, 350, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save case
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// StringBuilder param = new StringBuilder();

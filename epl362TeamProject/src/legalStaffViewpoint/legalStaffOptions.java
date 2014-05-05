@@ -19,10 +19,17 @@ public class legalStaffOptions extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new legalStaffOptions();
 	}
 
+	/**
+	 * Form constructor
+	 */
 	public legalStaffOptions() {
 		
 		final JFrame options = new JFrame();
@@ -47,6 +54,9 @@ public class legalStaffOptions extends JFrame {
 		JButton btnCases = new JButton("Cases");
 		btnCases.setBounds(170, 90, 170, 30);
 		contentPane.add(btnCases);
+		/**
+		 * Button to manage cases
+		 */
 		btnCases.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -57,6 +67,9 @@ public class legalStaffOptions extends JFrame {
 		JButton btnLogOut = new JButton("Log Out");
 		btnLogOut.setBounds(170, 130, 170, 30);
 		contentPane.add(btnLogOut);
+		/**
+		 * Button to log out
+		 */
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

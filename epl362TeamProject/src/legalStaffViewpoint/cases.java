@@ -19,10 +19,17 @@ public class cases extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new cases();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public cases() {
 		
 		final JFrame options = new JFrame();
@@ -37,6 +44,9 @@ public class cases extends JFrame {
 		JButton btnAddCase = new JButton("New Case");
 		btnAddCase.setBounds(160, 50, 170, 30);
 		contentPane.add(btnAddCase);
+		/**
+		 * Button to add a new case
+		 */
 		btnAddCase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -44,9 +54,12 @@ public class cases extends JFrame {
 			}
 		});
 		
-		JButton btnEditCase = new JButton("View Cases");
+		JButton btnEditCase = new JButton("View/Edit Cases");
 		btnEditCase.setBounds(160, 90, 170, 30);
 		contentPane.add(btnEditCase);
+		/**
+		 * Button to view/edit a case
+		 */
 		btnEditCase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -57,6 +70,9 @@ public class cases extends JFrame {
 		JButton btnAddrec = new JButton("Add Recommendation");
 		btnAddrec.setBounds(160, 130, 170, 30);
 		contentPane.add(btnAddrec);
+		/**
+		 * Button to add a recommendation
+		 */
 		btnAddrec.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -70,6 +86,9 @@ public class cases extends JFrame {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(160, 170, 170, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

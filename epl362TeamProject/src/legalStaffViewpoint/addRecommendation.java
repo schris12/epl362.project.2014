@@ -33,12 +33,18 @@ public class addRecommendation extends JFrame {
 	private JTextField txtID,cmbType, cmbClient,cmbLawyer;
 	private JTextArea txtRec, txtOpin;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new addRecommendation();
 	}
 
 	
-	
+	/**
+	 * Load cases
+	 */
 	public void fillcase(){
 		webservices.SelectCaseStub.Select_case request;
 		request = new Select_case();
@@ -58,6 +64,9 @@ public class addRecommendation extends JFrame {
 		
 	}
 	
+	/**
+	 * Constructor of the form
+	 */
 	public addRecommendation() {
 		
 		final JFrame addScr = new JFrame();
@@ -99,6 +108,9 @@ public class addRecommendation extends JFrame {
 		contentPane.add(cmbClient);
 		
 		fillcase();
+		/**
+		 * Dropdown list with the cases
+		 */
 		cmbCases.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				txtID.setText(cmbCases.getSelectedItem().toString().split(", ")[0]);
@@ -157,6 +169,9 @@ public class addRecommendation extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(190, 400, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtID.setText("");
@@ -172,6 +187,9 @@ public class addRecommendation extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(280, 400, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save recommendation
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -210,6 +228,9 @@ public class addRecommendation extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(370, 400, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();

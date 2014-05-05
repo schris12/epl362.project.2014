@@ -18,10 +18,16 @@ public class lawyerOptions extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 */
 	public static void main(String[] args) {
 		new lawyerOptions();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public lawyerOptions() {
 		
 		final JFrame options = new JFrame();
@@ -36,6 +42,9 @@ public class lawyerOptions extends JFrame {
 		JButton btnAddLawyer = new JButton("Add Lawyer");
 		btnAddLawyer.setBounds(160, 50, 170, 30);
 		contentPane.add(btnAddLawyer);
+		/**
+		 * Button to load form to add lawyer
+		 */
 		btnAddLawyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new addLawyer();
@@ -46,6 +55,9 @@ public class lawyerOptions extends JFrame {
 		JButton btnEditLawyer = new JButton("Edit/Remove Lawyer");
 		btnEditLawyer.setBounds(160, 90, 170, 30);
 		contentPane.add(btnEditLawyer);
+		/**
+		 * Button to load form to edit/remove a lawyer
+		 */
 		btnEditLawyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new editLawyer();
@@ -66,6 +78,9 @@ public class lawyerOptions extends JFrame {
 		JButton btnLogOut = new JButton("Back");
 		btnLogOut.setBounds(160, 210, 170, 30);
 		contentPane.add(btnLogOut);
+		/**
+		 * Button to go back
+		 */
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
