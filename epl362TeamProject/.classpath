@@ -17,6 +17,5 @@
 	<classpathentry kind="lib" path="lib/quick-json-1.0.2.3.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.30-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Constandinos/Documents/GitHub/epl362.project.2014/epl362TeamProject/lib/fest-swing-1.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

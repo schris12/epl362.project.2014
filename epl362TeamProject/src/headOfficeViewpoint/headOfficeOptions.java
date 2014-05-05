@@ -45,40 +45,13 @@ public class headOfficeOptions {
 			}
 		});
 
-		JButton btnReports = new JButton("Generate Weekly Report");
+		JButton btnReports = new JButton("Reports");
 		btnReports.setBounds(155, 90, 200, 30);
 		contentPane.add(btnReports);
 		btnReports.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				webservices.WeeklyReportStub.Weekly_report request;
-				request = new Weekly_report();
-				
-				//Get current date
-				Calendar c = Calendar.getInstance();
-				c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-				java.util.Date currentdate = c.getTime();//get currentdate
-				c.add(Calendar.DAY_OF_YEAR, 7);  // advances day by 2
-				java.util.Date lastdate =c.getTime();//get the last date of week
-				
-				String mon = currentdate.toString();
-				String sun = lastdate.toString();
-				request.setDate_s(mon);
-				request.setDate_e(sun);;
-				//Invoking the service
-				try {
-					webservices.WeeklyReportStub stub = new webservices.WeeklyReportStub();
-					webservices.WeeklyReportStub.Weekly_reportResponse response = stub.weekly_report(request);
-					String[] result = response.get_return();	
-					String s="Client Sum  |          Date          |  Branch  \n";
-					for(String ss : result){
-						s+=ss+"\n";
-					}
-					//s+=result;
-					JOptionPane.showMessageDialog(null, s, "Weekly Report",JOptionPane.PLAIN_MESSAGE);
-				} catch (RemoteException ea) {
-					// TODO Auto-generated catch block
-					ea.printStackTrace();
-				}		
+				options.dispose();
+				new headOfficeReports();		
 			}
 		});
 
