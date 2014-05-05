@@ -38,10 +38,17 @@ public class headOfficeReports {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new headOfficeReports();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public headOfficeReports() {
 
 		final JFrame reportFrame = new JFrame();
@@ -56,6 +63,9 @@ public class headOfficeReports {
 		JButton btnCaseType = new JButton("Cases By Type");
 		btnCaseType.setBounds(155, 50, 200, 30);
 		contentPane.add(btnCaseType);
+		/**
+		 * Button to generete case by type report
+		 */
 		btnCaseType.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				webservices.SelectTypeStub.Select_type request;
@@ -81,6 +91,9 @@ public class headOfficeReports {
 		JButton btnCaseRecom = new JButton("Recommendations By Case");
 		btnCaseRecom.setBounds(155, 90, 200, 30);
 		contentPane.add(btnCaseRecom);
+		/**
+		 * Button to generate recommendations by case report
+		 */
 		btnCaseRecom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				webservices.SelectRecomStub.Select_recom request;
@@ -106,6 +119,9 @@ public class headOfficeReports {
 		JButton btnReports = new JButton("Generate Weekly Report");
 		btnReports.setBounds(155, 130, 200, 30);
 		contentPane.add(btnReports);
+		/**
+		 * Button to generate weekly report
+		 */
 		btnReports.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				webservices.WeeklyReportStub.Weekly_report request;
@@ -143,6 +159,9 @@ public class headOfficeReports {
 		JButton btnWarningLetter = new JButton("Warning Letter");
 		btnWarningLetter.setBounds(155, 170, 200, 30);
 		contentPane.add(btnWarningLetter);
+		/**
+		 * Button to generate warning letter
+		 */
 		btnWarningLetter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				int client_id=Integer.parseInt(JOptionPane.showInputDialog(null, "Please Give Client Involved In Illegal Activities: ",""));
@@ -170,6 +189,9 @@ public class headOfficeReports {
 		JButton btnMissed = new JButton("Missed Appointments");
 		btnMissed.setBounds(155, 210, 200, 30);
 		contentPane.add(btnMissed);
+		/**
+		 * Button to view missed appointments
+		 */
 		btnMissed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				SelectMissedAppointmentStub.Select_missed_appointment request;
@@ -195,6 +217,9 @@ public class headOfficeReports {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 250, 200, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reportFrame.dispose();

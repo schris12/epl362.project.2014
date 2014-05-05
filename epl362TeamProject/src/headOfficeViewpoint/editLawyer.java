@@ -21,9 +21,6 @@ import webservices.SelectLawyerStub.Select_lawyer;
 
 public class editLawyer extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JComboBox<String> cmbLawyer;
@@ -36,6 +33,9 @@ public class editLawyer extends JFrame {
 		new editLawyer();
 	}
 
+	/**
+	 * Load lawyers
+	 */
 	public void fillLawyer() {
 		webservices.SelectLawyerStub.Select_lawyer request;
 		request = new Select_lawyer();
@@ -71,6 +71,9 @@ public class editLawyer extends JFrame {
 		contentPane.setLayout(null);
 
 		fillLawyer();
+		/**
+		 * Dropdown list with lawyers
+		 */
 		cmbLawyer.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String values = cmbLawyer.getSelectedItem().toString();
@@ -104,6 +107,9 @@ public class editLawyer extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(270, 300, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save changes
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("EditLawyer");
@@ -138,6 +144,9 @@ public class editLawyer extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(360, 300, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtLawyerID.setText("");
@@ -150,6 +159,9 @@ public class editLawyer extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(450, 300, 80, 30);
 		contentPane.add(btnDelete);
+		/**
+		 * Button to delete selection
+		 */
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = txtLawyerID.getText();
@@ -179,6 +191,9 @@ public class editLawyer extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(540, 300, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				recordScr.dispose();

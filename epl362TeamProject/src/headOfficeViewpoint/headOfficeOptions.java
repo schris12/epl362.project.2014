@@ -22,10 +22,17 @@ public class headOfficeOptions {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new headOfficeOptions();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public headOfficeOptions() {
 
 		final JFrame options = new JFrame();
@@ -40,6 +47,9 @@ public class headOfficeOptions {
 		JButton btnCases = new JButton("Client Cases");
 		btnCases.setBounds(155, 50, 200, 30);
 		contentPane.add(btnCases);
+		/**
+		 * Button to manage client cases
+		 */
 		btnCases.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new viewCases();
@@ -50,6 +60,9 @@ public class headOfficeOptions {
 		JButton btnReports = new JButton("Reports");
 		btnReports.setBounds(155, 90, 200, 30);
 		contentPane.add(btnReports);
+		/**
+		 * Button to reports form
+		 */
 		btnReports.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -61,6 +74,9 @@ public class headOfficeOptions {
 		JButton btnLawyers = new JButton("Lawyers");
 		btnLawyers.setBounds(155, 130, 200, 30);
 		contentPane.add(btnLawyers);
+		/**
+		 * Button to manage lawyers
+		 */
 		btnLawyers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -71,6 +87,9 @@ public class headOfficeOptions {
 		JButton btnRec = new JButton("Receptionists");
 		btnRec.setBounds(155, 170, 200, 30);
 		contentPane.add(btnRec);
+		/**
+		 * Button to manage Receptionists
+		 */
 		btnRec.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -81,6 +100,9 @@ public class headOfficeOptions {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 210, 200, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

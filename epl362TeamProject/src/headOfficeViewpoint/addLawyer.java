@@ -23,10 +23,17 @@ public class addLawyer extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtLawyerID,txtLawyerName,txtLawyerSurname;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new addLawyer();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public addLawyer() {
 		
 		final JFrame addScr = new JFrame();
@@ -61,6 +68,9 @@ public class addLawyer extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(130, 320, 80, 30);
 		contentPane.add(btnClear);
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtLawyerID.setText("");
@@ -72,6 +82,9 @@ public class addLawyer extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(220, 320, 80, 30);
 		contentPane.add(btnSave);
+		/**
+		 * Button to save insertion
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("AddLawyer");
@@ -102,6 +115,9 @@ public class addLawyer extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(310, 320, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();

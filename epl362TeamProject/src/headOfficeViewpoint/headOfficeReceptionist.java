@@ -26,10 +26,17 @@ public class headOfficeReceptionist {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new headOfficeReceptionist();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public headOfficeReceptionist() {
 		
 		final JFrame options = new JFrame();
@@ -44,6 +51,9 @@ public class headOfficeReceptionist {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(155, 50, 200, 30);
 		contentPane.add(btnAdd);
+		/**
+		 * Button to add a receptionist
+		 */
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -53,6 +63,9 @@ public class headOfficeReceptionist {
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.setBounds(155, 90, 200, 30);
 		contentPane.add(btnEdit);
+		/**
+		 * Button to edit recepionist
+		 */
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -62,6 +75,9 @@ public class headOfficeReceptionist {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 130, 200, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

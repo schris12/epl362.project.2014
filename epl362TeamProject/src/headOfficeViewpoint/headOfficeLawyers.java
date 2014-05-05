@@ -26,10 +26,17 @@ public class headOfficeLawyers {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new headOfficeLawyers();
 	}
 
+	/**
+	 * Constructor of the form
+	 */
 	public headOfficeLawyers() {
 		
 		final JFrame options = new JFrame();
@@ -44,6 +51,9 @@ public class headOfficeLawyers {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(155, 50, 200, 30);
 		contentPane.add(btnAdd);
+		/**
+		 * Button to add a new lawyer
+		 */
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -54,6 +64,9 @@ public class headOfficeLawyers {
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.setBounds(155, 90, 200, 30);
 		contentPane.add(btnEdit);
+		/**
+		 * Button to edit an existing lawyer
+		 */
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
@@ -64,6 +77,9 @@ public class headOfficeLawyers {
 		JButton btnRecord = new JButton("Back");
 		btnRecord.setBounds(155, 130, 200, 30);
 		contentPane.add(btnRecord);
+		/**
+		 * Button to go back
+		 */
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();

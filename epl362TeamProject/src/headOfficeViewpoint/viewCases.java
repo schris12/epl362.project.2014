@@ -27,12 +27,18 @@ public class viewCases extends JFrame {
 	private JFormattedTextField dateOpen, dateClose;
 	private JTextField txtID,cmbType, cmbClient,cmbLawyer;
 
+	/**
+	 * Launch application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new viewCases();
 	}
 
 	
-	
+	/**
+	 * Load cases
+	 */
 	public void fillcase(){
 		webservices.SelectCaseStub.Select_case request;
 		request = new Select_case();
@@ -52,6 +58,9 @@ public class viewCases extends JFrame {
 		
 	}
 	
+	/**
+	 * Constructor of the form
+	 */
 	public viewCases() {
 		
 		final JFrame addScr = new JFrame();
@@ -93,6 +102,9 @@ public class viewCases extends JFrame {
 		contentPane.add(cmbClient);
 		
 		fillcase();
+		/**
+		 * Dropdown list with the cases 
+		 */
 		cmbCases.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				txtID.setText(cmbCases.getSelectedItem().toString().split(", ")[0]);
@@ -129,6 +141,9 @@ public class viewCases extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(370, 400, 80, 30);
 		contentPane.add(btnBack);
+		/**
+		 * Button to go back
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addScr.dispose();
