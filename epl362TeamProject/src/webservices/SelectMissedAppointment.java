@@ -24,7 +24,7 @@ public class SelectMissedAppointment {
 
 			statement = connect.createStatement();
 			resultSet = statement
-					.executeQuery("select * from appointments WHERE (`missed`=`1`)");
+					.executeQuery("select * from appointments WHERE (`missed`=1)");
 
 			while (resultSet.next()) {
 				String client_id = resultSet.getString("client_id");

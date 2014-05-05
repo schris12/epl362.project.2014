@@ -42,26 +42,8 @@ public class receptionistOptions {
 			}
 		});
 		
-		JButton btnSearch = new JButton("Search Case");
-		btnSearch.setBounds(150, 90, 200, 30);
-		contentPane.add(btnSearch);
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
-		JButton btnGen = new JButton("Generate Reccomendations");
-		btnGen.setBounds(150, 130, 200, 30);
-		contentPane.add(btnGen);
-		btnGen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
 		JButton btnClients = new JButton("Clients");
-		btnClients.setBounds(150, 170, 200, 30);
+		btnClients.setBounds(150, 90, 200, 30);
 		contentPane.add(btnClients);
 		btnClients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
