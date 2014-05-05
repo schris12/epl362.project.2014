@@ -15,11 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import main.logWriter;
 import webservices.PutCaseParseExceptionException;
 import webservices.PutCaseStub.Put_case;
+import webservices.PutRecomStub.Put_recom;
 import webservices.SelectClientStub.Select_client;
 import webservices.SelectLawyerStub.Select_lawyer;
-import main.logWriter;
 
 public class addCase extends JFrame {
 
@@ -74,6 +75,7 @@ public class addCase extends JFrame {
 
 	}
 
+	
 	public addCase() {
 
 		final JFrame addScr = new JFrame();
@@ -91,9 +93,9 @@ public class addCase extends JFrame {
 		JLabel lblClient = new JLabel("Select Client:");
 		lblClient.setBounds(100, 100, 100, 30);
 		contentPane.add(lblClient);
-		JLabel lblCase = new JLabel("Case Details:");
-		lblCase.setBounds(480, 100, 100, 30);
-		contentPane.add(lblCase);
+//		JLabel lblCase = new JLabel("Case Details:");
+//		lblCase.setBounds(480, 100, 100, 30);
+//		contentPane.add(lblCase);
 		
 		JLabel lblLawyer = new JLabel("Select Lawyer:");
 		lblLawyer.setBounds(100, 140, 100, 30);
@@ -151,9 +153,9 @@ public class addCase extends JFrame {
 		cmbRisk.setBounds(240, 300, 200, 30);
 		contentPane.add(cmbRisk);
 
-		txtCase = new JTextField();
-		txtCase.setBounds(635,100,200,30);
-		contentPane.add(txtCase);
+//		txtCase = new JTextField();
+//		txtCase.setBounds(635,100,200,30);
+//		contentPane.add(txtCase);
 		txtRec = new JTextField();
 		txtRec.setBounds(635, 140, 200, 30);
 		contentPane.add(txtRec);
@@ -232,6 +234,33 @@ public class addCase extends JFrame {
 					webservices.PutCaseStub stub = new webservices.PutCaseStub();
 					webservices.PutCaseStub.Put_caseResponse response;
 					response = stub.put_case(request);
+					System.out.println("Response: " + response.get_return());
+					
+				} catch (PutCaseParseExceptionException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (RemoteException ea) {
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
+				
+				//Put recom
+				String opinion = txtOpin.getText().toString();
+				String recom = txtRec.getText().toString();
+				webservices.PutRecomStub.Put_recom request_r;
+				request_r = new Put_recom();
+				request.setClient_id(client_id);
+				/*Check out for case id*/
+				request_r.setId(param);
+				request_r.setDate(date_open);
+				request_r.setOpinion(opinion);
+				request_r.setRecom(recom);
+
+				// Invoking the service
+				try {
+					webservices.PutRecomStub stub = new webservices.PutRecomStub();
+					webservices.PutRecomStub.Put_recomResponse response;
+					response = stub.put_recom(request_r);
 					System.out.println("Response: " + response.get_return());
 					
 				} catch (PutCaseParseExceptionException e1) {
