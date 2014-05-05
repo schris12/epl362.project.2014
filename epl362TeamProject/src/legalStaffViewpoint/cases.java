@@ -2,12 +2,16 @@ package legalStaffViewpoint;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import webservices.PutCaseParseExceptionException;
+import webservices.PutRecomStub.Put_recom;
 
 
 public class cases extends JFrame {
@@ -30,27 +34,41 @@ public class cases extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnAddClient = new JButton("New Case");
-		btnAddClient.setBounds(160, 50, 170, 30);
-		contentPane.add(btnAddClient);
-		btnAddClient.addActionListener(new ActionListener() {
+		JButton btnAddCase = new JButton("New Case");
+		btnAddCase.setBounds(160, 50, 170, 30);
+		contentPane.add(btnAddCase);
+		btnAddCase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				options.dispose();
 				new addCase();
 			}
 		});
 		
-		JButton btnEditClient = new JButton("View Cases");
-		btnEditClient.setBounds(160, 90, 170, 30);
-		contentPane.add(btnEditClient);
-		btnEditClient.addActionListener(new ActionListener() {
+		JButton btnEditCase = new JButton("View Cases");
+		btnEditCase.setBounds(160, 90, 170, 30);
+		contentPane.add(btnEditCase);
+		btnEditCase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				options.dispose();
+				new editCase();
 			}
 		});
 		
+		JButton btnAddrec = new JButton("Add Recommendation");
+		btnAddrec.setBounds(160, 130, 170, 30);
+		contentPane.add(btnAddrec);
+		btnAddrec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				options.dispose();
+				new addRecommendation();
+			}
+		});
+		
+		
+		
+		
 		JButton btnRecord = new JButton("Back");
-		btnRecord.setBounds(160, 130, 170, 30);
+		btnRecord.setBounds(160, 170, 170, 30);
 		contentPane.add(btnRecord);
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

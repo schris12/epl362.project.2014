@@ -29,7 +29,7 @@ public class addCase extends JFrame {
 	private JComboBox<String> cmbClient, cmbLawyer, cmbRisk;
 	private JFormattedTextField dateOpen, dateClose;
 	private JTextField txtID, cmbType;
-	private JTextField txtCase,txtRec,txtOpin,txtCom;
+	private JTextField txtCase;
 
 	public static void main(String[] args) {
 		new addCase();
@@ -100,23 +100,14 @@ public class addCase extends JFrame {
 		JLabel lblLawyer = new JLabel("Select Lawyer:");
 		lblLawyer.setBounds(100, 140, 100, 30);
 		contentPane.add(lblLawyer);
-		JLabel lblRec = new JLabel("Reccomendations:");
-		lblRec.setBounds(480, 140, 130, 30);
-		contentPane.add(lblRec);
 		
 		JLabel lblType = new JLabel("Case Type:");
 		lblType.setBounds(100, 180, 100, 30);
 		contentPane.add(lblType);
-		JLabel lblOpin = new JLabel("Legal Opinion:");
-		lblOpin.setBounds(480, 180, 100, 30);
-		contentPane.add(lblOpin);
 		
 		JLabel lblDateOpen = new JLabel("Date Open:");
 		lblDateOpen.setBounds(100, 220, 100, 30);
 		contentPane.add(lblDateOpen);
-		JLabel lblCom = new JLabel("Comments:");
-		lblCom.setBounds(480, 220, 100, 30);
-		contentPane.add(lblCom);
 		
 		JLabel lblDateClose = new JLabel("Date Close:");
 		lblDateClose.setBounds(100, 260, 100, 30);
@@ -156,15 +147,6 @@ public class addCase extends JFrame {
 //		txtCase = new JTextField();
 //		txtCase.setBounds(635,100,200,30);
 //		contentPane.add(txtCase);
-		txtRec = new JTextField();
-		txtRec.setBounds(635, 140, 200, 30);
-		contentPane.add(txtRec);
-		txtOpin = new JTextField();
-		txtOpin.setBounds(635, 180, 200, 30);
-		contentPane.add(txtOpin);
-		txtCom = new JTextField();
-		txtCom.setBounds(635, 220, 200, 30);
-		contentPane.add(txtCom);
 		
 		
 		JButton btnClear = new JButton("Clear");
@@ -243,33 +225,6 @@ public class addCase extends JFrame {
 					// TODO Auto-generated catch block
 					ea.printStackTrace();
 				}
-				
-				//Put recom
-				String opinion = txtOpin.getText().toString();
-				String recom = txtRec.getText().toString();
-				webservices.PutRecomStub.Put_recom request_r;
-				request_r = new Put_recom();
-				request.setClient_id(client_id);
-				/*Check out for case id*/
-				request_r.setId(param);
-				request_r.setDate(date_open);
-				request_r.setOpinion(opinion);
-				request_r.setRecom(recom);
-
-				// Invoking the service
-				try {
-					webservices.PutRecomStub stub = new webservices.PutRecomStub();
-					webservices.PutRecomStub.Put_recomResponse response;
-					response = stub.put_recom(request_r);
-					System.out.println("Response: " + response.get_return());
-					
-				} catch (PutCaseParseExceptionException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (RemoteException ea) {
-					// TODO Auto-generated catch block
-					ea.printStackTrace();
-				}
 			}
 
 		});
@@ -294,7 +249,7 @@ public class addCase extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		addScr.add(contentPane);
-		addScr.setSize(1000, 500);
+		addScr.setSize(575, 500);
 		addScr.setVisible(true);
 	}
 
