@@ -12,6 +12,11 @@ import javax.net.ssl.HttpsURLConnection;
 public class httpRequest  {
 	private final String USER_AGENT = "Mozilla/5.0";
 	 
+	/**
+	 * Launch application
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
  
 		httpRequest http = new httpRequest();
@@ -26,7 +31,12 @@ public class httpRequest  {
 		http.sendPost("http://localhost:8080/RESTfulProject/REST/WebService/GetClients", "lon=33&peaks=666&UID=kostis&time_to=02&time_from=01&lat=35");
 	}
  
-	// HTTP GET request
+	/**
+	 *  HTTP GET request
+	 * @param url
+	 * @return
+	 * @throws Exception
+	 */
 	public String sendGet(String url) throws Exception { 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -57,7 +67,12 @@ public class httpRequest  {
  
 	}
  
-	// HTTP POST request
+	/**
+	 *  HTTP POST request
+	 * @param url
+	 * @param param
+	 * @throws Exception
+	 */
 	public void sendPost(String url, String param) throws Exception {
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -95,6 +110,11 @@ public class httpRequest  {
 		System.out.println(response.toString());
 	}
 	
+	/**
+	 * Put request
+	 * @param url
+	 * @throws Exception
+	 */
 	public void sendPut(String url) throws Exception{
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -107,6 +127,11 @@ public class httpRequest  {
 		//require params?
 	}
 	
+	/**
+	 * Delete request
+	 * @param url
+	 * @throws Exception
+	 */
 	public void sendDelete(String url) throws Exception{
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();

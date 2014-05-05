@@ -34,6 +34,10 @@ public class MainScreen {
 	private JPanel contentPane;
 	private JTextField txtUsername, txtPassword;
 
+	/**
+	 * Launch Application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new MainScreen();
 		String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
@@ -48,6 +52,9 @@ public class MainScreen {
 		} 
 	}
 
+	/**
+	 * Create the main screen form
+	 */
 	public MainScreen() {
 
 		final JFrame mainLoginScreen = new JFrame();

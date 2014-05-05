@@ -6,6 +6,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class fillCombo {
+	/**
+	 * Load clients
+	 * @param cmb
+	 */
 	public static void fillClient(JComboBox<String> cmb){
 		httpRequest http = new httpRequest();
 		String url = constants.getUrl() + "GetClients/";
@@ -28,6 +32,10 @@ public class fillCombo {
 		}
 	}
 	
+	/**
+	 * Load lawyers
+	 * @param cmb
+	 */
 	public static void fillLawyer(JComboBox<String> cmb){
 		httpRequest http = new httpRequest();
 		String url = constants.getUrl() + "GetLawyers/";
@@ -50,6 +58,10 @@ public class fillCombo {
 		}
 	}
 	
+	/**
+	 * Load type
+	 * @param cmb
+	 */
 	public static void fillType(JComboBox<String> cmb){
 		httpRequest http = new httpRequest();
 		String url = constants.getUrl() + "GetCases/";
@@ -72,6 +84,10 @@ public class fillCombo {
 		}
 	}
 	
+	/**
+	 * Load branches
+	 * @param cmb
+	 */
 	public static void fillBranch(JComboBox<String> cmb){
 		//we need branches
 		httpRequest http = new httpRequest();
