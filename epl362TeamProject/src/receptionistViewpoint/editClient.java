@@ -21,9 +21,6 @@ import webservices.SelectClientStub.Select_client;
 
 public class editClient extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JComboBox<String> cmbClient;
@@ -36,6 +33,9 @@ public class editClient extends JFrame {
 		new editClient();
 	}
 
+	/**
+	 * Load the clients of the system
+	 */
 	public void fillClient() {
 		webservices.SelectClientStub.Select_client request;
 		request = new Select_client();
@@ -104,6 +104,10 @@ public class editClient extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(270, 300, 80, 30);
 		contentPane.add(btnSave);
+		
+		/**
+		 * Button to save changes
+		 */
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("EditCase");
@@ -138,6 +142,10 @@ public class editClient extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(360, 300, 80, 30);
 		contentPane.add(btnClear);
+		
+		/**
+		 * Button to clear form
+		 */
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtClientID.setText("");
@@ -150,6 +158,10 @@ public class editClient extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBounds(450, 300, 80, 30);
 		contentPane.add(btnDelete);
+		
+		/**
+		 * Button to delete selection
+		 */
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new logWriter().logWriterOut("DeleteCase");
@@ -184,6 +196,10 @@ public class editClient extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(540, 300, 80, 30);
 		contentPane.add(btnBack);
+		
+		/**
+		 * Button to return to client management form
+		 */
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				recordScr.dispose();
