@@ -62,18 +62,18 @@ public class clientOptions extends JFrame {
 			}
 		});
 		
-		JButton btnRecord = new JButton("View Client Record");
-		btnRecord.setBounds(160, 130, 170, 30);
-		contentPane.add(btnRecord);
-		/**
-		 * Button to load form to view client records
-		 */
-		btnRecord.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				options.dispose();
-				new clientRecords();
-			}
-		});
+//		JButton btnRecord = new JButton("View Client Record");
+//		btnRecord.setBounds(160, 130, 170, 30);
+//		contentPane.add(btnRecord);
+//		/**
+//		 * Button to load form to view client records
+//		 */
+//		btnRecord.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				options.dispose();
+//				new clientRecords();
+//			}
+//		});
 		
 		JButton btnLogOut = new JButton("Back");
 		btnLogOut.setBounds(160, 170, 170, 30);

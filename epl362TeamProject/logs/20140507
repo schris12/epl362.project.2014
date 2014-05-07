@@ -1,7 +1,9 @@
-AddCase
-EditCase
-Receptionist: receptioni Logged In
 Manager: manager Logged In
-Manager: manager Logged In
+AddLawyer
 Lawyer: lawyer Logged In
+AddClient
+DeleteCase
+AddClient
 Receptionist: receptioni Logged In
+AddAppointment
+Manager: manager Logged In
